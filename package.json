@@ -23,7 +23,7 @@
     "eslint-plugin-import": "^2.26.0",
     "html-validator-cli": "^2.0.0",
     "prettier": "2.6.2",
-    "stylelint": "^14.7.1",
+    "stylelint": "^14.16.1",
     "stylelint-config-standard": "^25.0.0"
   },
   "dependencies": {
