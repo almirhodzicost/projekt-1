@@ -10,3 +10,35 @@ html {
 .bg-style {
     background-color: rgb(202, 202, 254);
 }
+
+.btn {
+    font-size: 14px;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: default !important;
+}
+
+.btn.btn-primary {
+    background-color: rgb(106, 106, 250);
+    color: white;
+}
+
+.btn.btn-success {
+    background-color: rgb(33, 167, 36);
+    color: white;
+}
+
+.btn.btn-danger {
+    background-color: rgb(225, 18, 18);
+    color: white;
+}
+
+.btn.btn-secondary {
+    background-color: rgb(110, 106, 106);
+    color: white;
+}
+
+.btn:hover {
+    background-image: linear-gradient(rgb(0 0 0/15%) 0 0);
+  }

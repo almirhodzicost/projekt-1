@@ -14,16 +14,79 @@
 <h1>Note App</h1>
 
 <div class="row">
-  <div class="col-xs-12
-              col-sm-8
-              col-md-6">
-      <div class="box bg-style">Responsive</div>
+  <!-- Ausgabe Start -->
+  <div class="col-xs-12 col-sm-7">
+    <h3>Notizen</h3>
+
+      <div class="box bg-style">
+        <input type="button" class="btn btn-primary" name="button_create" value="Create new todo">
+        <input type="button" class="btn btn-primary" name="button_style" value="Toggle Style">
+      </div>
+
+      <div class="box bg-style">
+        <input type="button" class="btn btn-primary" name="button_sortByName" value="Name">
+        <input type="button" class="btn btn-primary" name="button_sortByDueDate" value="by Due Date">
+        <input type="button" class="btn btn-primary" name="button_sortByCreationDate" value="by Creation Date">
+        <input type="button" class="btn btn-primary" name="button_sortByImportance" value="by Importance">
+        <input type="button" class="btn btn-primary" name="button_sortFilterCompleted" value="Filter Completed">
+      </div>
+
+      <div class="box bg-style">
+        <div class="notice">
+          <div class="date">in 7 days</div>
+          <div class="title">Geburi von Sarah</div>
+          <div class="importance">Importance</div>
+          <div class="status">Status</div>
+          <div class="text">Text</div>
+          <div class="action">Edit</div>
+          <hr>
+        </div>
+      </div>
   </div>
-  <div class="col-xs-12
-              col-sm-8
-              col-md-6">
-      <div class="box bg-style">Responsive</div>
+  <!-- Ausgabe Ende -->
+
+  <!-- Formular Start -->
+  <div class="col-xs-12 col-sm-5">
+    <h3>Formular</h3>
+      <div class="box bg-style">
+        <form>
+          <div class="form-group">
+            <label>Title *</label>
+            <input type="text" class="form-control" name="title" placeholder="Title" required="required">
+          </div>
+        
+          <div class="form-group">
+            <label>Importance *</label>
+            <input type="text" class="form-control" name="importance" placeholder="Importance" required="required">
+          </div>
+        
+          <div class="form-group">
+            <label>Due Date *</label>
+            <input type="date" class="form-control form-control-sm" name="date" value="dd/mm/yyyy">
+          </div>
+        
+          <div class="form-group">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" name="finished" value="1" id="finished">
+              <label for="finished" class="form-check-label">Finished</label>
+            </div>
+          </div>
+        
+          <div class="form-group">
+            <label>Description</label> 
+            <textarea class="form-control" name="description" placeholder="Description"></textarea>
+          </div>
+        
+          <div class="form-group">
+            <input type="button" class="btn btn-primary" name="submit_update" value="Update">
+            <input type="button" class="btn btn-success" name="submit_updateoverview" value="Update &amp; Overview">
+            <input type="button" class="btn btn-secondary" name="submit_overview" value="Overview">
+          </div>
+          <small>Felder markiert mit * sind Pflichtfelder.</small>
+        </form>
+      </div>
   </div>
+  <!-- Formular Ende -->
 </div>
 
 </body>
