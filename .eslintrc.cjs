@@ -24,6 +24,6 @@ module.exports = {
         "import/extensions": "off",
         "object-curly-newline": "off",
         "object-curly-spacing": "off",
-        "linebreak-style": "off"
+        "linebreak-style": "off",
     }
 }
