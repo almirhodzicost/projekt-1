@@ -1,0 +1,88 @@
+.form-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+
+.form-group-checkbox {
+    margin-bottom: 15px;
+}
+
+.form-group-actions {
+    margin-bottom: 15px;
+}
+
+.form-group > label,
+.form-group-checkbox > label {
+    font-weight: normal;
+    margin-bottom: 0.25em;
+    color: darkcyan;
+}
+
+.form-group input[type="text"],
+.form-group input[type="date"],
+.form-group textarea {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.form-group input[type="checkbox"] {
+    margin-top: 5px;
+}
+
+.btn {
+    font-size: 14px;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: default !important;
+}
+
+.btn-xl {
+    font-size: 15px;
+    padding: 7px 25px;
+    border: none;
+    border-radius: 7px;
+    cursor: default !important;
+}
+
+.btn-primary {
+    background-color: rgb(106, 106, 250);
+    color: white;
+}
+
+.btn-success {
+    background-color: rgb(33, 167, 36);
+    color: white;
+}
+
+.btn-danger {
+    background-color: rgb(225, 18, 18);
+    color: white;
+}
+
+.btn-secondary {
+    background-color: rgb(110, 106, 106);
+    color: white;
+}
+
+.btn:hover {
+    background-image: linear-gradient(rgb(0 0 0/15%) 0 0);
+}
+
+.submit-button {
+    margin-top: 15px;
+}

@@ -19,6 +19,11 @@ module.exports = {
         "@typescript-eslint"
     ],
     "rules": {
-       
+        "indent": "off",
+        "no-plusplus": "off",
+        "import/extensions": "off",
+        "object-curly-newline": "off",
+        "object-curly-spacing": "off",
+        "linebreak-style": "off"
     }
 }
