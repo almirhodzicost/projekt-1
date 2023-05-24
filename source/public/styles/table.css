@@ -1,0 +1,18 @@
+.table {
+    display: grid;
+    grid-template-columns: 1fr 4fr 1fr;
+}
+
+.table > div {
+    margin: 5px;
+    background: powderblue;
+    padding: 0px;
+}
+
+.table > div:nth-child(3n+2) {
+    background: lemonchiffon;
+}
+
+.table > div:nth-child(3n+3) {
+    background: palegreen;
+}

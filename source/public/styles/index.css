@@ -1,15 +1,35 @@
 @import "flexbox.css";
 @import "form.css";
+@import "table.css";
+
 * {
     box-sizing: border-box;
 }
 
 html {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: "Helvetica Neue";
     font-size: 16px;
     font-style: normal;
+    padding: 30px;
 }
 
-.bg-style {
-    background-color: rgb(202, 202, 254);
+.app-container {
+    border-radius: 10px;
 }
+
+.items {
+    display: flex;
+    flex-direction: column;
+}
+
+.items .todo {
+    background-color: cornflowerblue;
+}
+
+.items .todo .infos {
+    background-color: lightgreen;
+}
+.items .todo .actions {
+    background-color: lightcoral;
+}
+

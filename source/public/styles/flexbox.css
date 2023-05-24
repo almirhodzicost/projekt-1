@@ -702,6 +702,7 @@
       flex: 0 0 auto;
       padding-right: 1rem;
       padding-left: 1rem;
+
     }
   
     .col-lg {
@@ -892,3 +893,8 @@
       order: 1;
     }
   }
+
+.col-gap {
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
