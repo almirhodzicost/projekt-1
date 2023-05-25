@@ -8,27 +8,31 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
   <link rel="stylesheet" href="./styles/index.css">
   <link rel="icon" type="image/x-icon" href="./images/favicon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;700&family=Indie+Flower&display=swap" rel="stylesheet">
 </head>
 <body>
-<h1>Notes</h1>
+<h1>NOTES APP</h1>
 
 <div class="row">
 
     <div class="col-xs-12 col-sm-7 app-container">
-      <h3>Entries</h3>
+      <h3>ENTRIES</h3>
       <!--Toolbar-->
-      <div id="ToolBar">
+      <div id="tool-bar">
         <div id="Basic">
           <input type="button" class="btn btn-primary" name="button_create" value="Create new todo">
-          <input type="button" class="btn btn-primary" name="button_style" value="Toggle Style">
+          <input type="button" class="btn btn-primary" name="button_style" value="Toggle Style" id="theme-toggler">
         </div>
-        <div id="Sorting">
+        <!--<div id="Sorting">
           <input type="button" class="btn btn-primary" name="button_sortByName" value="Name">
           <input type="button" class="btn btn-primary" name="button_sortByDueDate" value="by Due Date">
           <input type="button" class="btn btn-primary" name="button_sortByCreationDate" value="by Creation Date">
           <input type="button" class="btn btn-primary" name="button_sortByImportance" value="by Importance">
           <input type="button" class="btn btn-primary" name="button_sortFilterCompleted" value="Filter Completed">
-        </div>
+        </div>-->
       </div>
       <!--ToDo Items-->
       <div id="ToDoBox">
@@ -43,7 +47,7 @@
     </div>
 
     <div class="col-xs-12 col-sm-5 app-container">
-      <h3>Form</h3>
+      <h3>FORM</h3>
       <div class="form-container" id="FormBox">
         <form>
           <!--Input Title-->

@@ -4,15 +4,15 @@
 }
 
 .table > div {
-    margin: 5px;
-    background: powderblue;
-    padding: 0px;
+    margin: 0;
+    background: transparent;
+    padding: 0;
 }
 
 .table > div:nth-child(3n+2) {
-    background: lemonchiffon;
+    background: transparent;
 }
 
 .table > div:nth-child(3n+3) {
-    background: palegreen;
+    background: transparent;
 }

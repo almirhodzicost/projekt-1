@@ -18,3 +18,8 @@
      */
     const themeSwitcher = document.getElementById("theme-toggler");
 
+    themeSwitcher.addEventListener("click", () => {
+        document.body.classList.toggle("dark-theme");
+        console.log("Theme toggled");
+    });
+

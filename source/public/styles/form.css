@@ -23,31 +23,48 @@
     font-weight: normal;
     margin-bottom: 0.5em;
     color: darkcyan;
+    font-family: Barlow, sans-serif;
 }
 
 .form-group input[type="text"],
 .form-group input[type="date"],
 .form-group textarea {
     padding: 7px 10px;
-    border: 1px solid #ccc;
+    border: 0 solid var(--theme-form-border);
     border-radius: 4px;
     font-size: 15px;
+    background-color: var(--theme-form-background);
+    transition: background-color 0.15s ease;
+    color: var(--theme-color);
+    font-family: Barlow, sans-serif;
+}
+
+.form-group input[type="text"]:focus {
+    outline: none;
+    border: none !important;
+}
+
+.form-group input:focus {
+    border: none !important;
 }
 
 .form-group select {
     padding: 6px 8px;
-    border: 1px solid #ccc;
+    border: 0 solid var(--theme-form-border);
     border-radius: 4px;
+    background-color: var(--theme-form-background);
+    transition: background-color 0.15s ease;
+    color: var(--theme-color);
 }
 
 .form-group input[type="date"] {
-    font-family: "Helvetica Neue";
+    font-family: Barlow, sans-serif;
 }
 
 .form-group textarea {
     resize: vertical;
     min-height: 100px;
-    font-family: "Helvetica Neue";
+    font-family: Barlow, sans-serif;
 }
 
 .form-group input[type="checkbox"] {
@@ -75,7 +92,8 @@
 }
 
 .btn-primary {
-    background-color: rgb(106, 106, 250);
+    background-color: var(--theme-button-background);
+    transition: background-color 0.15s ease;
     color: white;
 }
 

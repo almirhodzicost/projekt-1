@@ -7,14 +7,41 @@
 }
 
 html {
-    font-family: "Helvetica Neue";
+    font-family: Barlow, sans-serif;
     font-size: 16px;
     font-style: normal;
     padding: 30px;
 }
 
+body {
+    background-color: var(--theme-background);
+    transition: background-color 0.15s ease;
+    color: var(--theme-color);
+    margin: 0;
+}
+
+:root {
+    --theme-background: white;
+    --theme-color: #222;
+    --theme-button-background: #055fd9;
+    --theme-form-background: #ece9e9;
+    --theme-form-border: #ccc;
+}
+
+.dark-theme {
+    --theme-background: #222231;
+    --theme-color: white;
+    --theme-button-background: #485d7a;
+    --theme-form-background: #3e3e59;
+    --theme-form-border: #485d7a;
+}
+
 .app-container {
     border-radius: 10px;
+}
+
+#tool-bar {
+    margin-bottom: 20px;
 }
 
 .items {
@@ -32,4 +59,3 @@ html {
 .items .todo .actions {
     background-color: lightcoral;
 }
-
