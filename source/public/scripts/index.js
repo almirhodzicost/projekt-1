@@ -20,6 +20,11 @@
 
     themeSwitcher.addEventListener("click", () => {
         document.body.classList.toggle("dark-theme");
-        console.log("Theme toggled");
+
+        if (document.body.classList.contains("dark-theme")) {
+            themeSwitcher.setAttribute("name", "sunny-outline");
+        } else {
+            themeSwitcher.setAttribute("name", "moon-outline");
+        }
     });
 

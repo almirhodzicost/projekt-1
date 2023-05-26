@@ -39,17 +39,8 @@
     font-family: Barlow, sans-serif;
 }
 
-.form-group input[type="text"]:focus {
-    outline: none;
-    border: none !important;
-}
-
-.form-group input:focus {
-    border: none !important;
-}
-
 .form-group select {
-    padding: 6px 8px;
+    padding: 7px 8px;
     border: 0 solid var(--theme-form-border);
     border-radius: 4px;
     background-color: var(--theme-form-background);
@@ -65,6 +56,14 @@
     resize: vertical;
     min-height: 100px;
     font-family: Barlow, sans-serif;
+}
+
+.form-group input[type="text"]:focus,
+.form-group input[type="date"]:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+    outline: none;
+    border: none !important;
 }
 
 .form-group input[type="checkbox"] {

@@ -40,6 +40,12 @@ body {
     border-radius: 10px;
 }
 
+.headliner,
+.headliner h1 {
+    padding: 0;
+    margin: 0;
+}
+
 #tool-bar {
     margin-bottom: 20px;
 }
@@ -58,4 +64,10 @@ body {
 }
 .items .todo .actions {
     background-color: lightcoral;
+}
+
+.theme-icon {
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
 }

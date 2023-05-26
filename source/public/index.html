@@ -4,17 +4,24 @@
   <meta charset="UTF-8">
   <title>Notes</title>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.3/handlebars.min.js" integrity="sha256-/PJBs6QWvXijOFIX04kZpLb6ZtSQckdOIavLWKKOgXU=" crossorigin="anonymous" defer></script>
-  <script src="./scripts/index.js" type="module"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
+  <script src="./scripts/index.js" type="module"></script>
   <link rel="stylesheet" href="./styles/index.css">
   <link rel="icon" type="image/x-icon" href="./images/favicon.png">
-
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;700&family=Indie+Flower&display=swap" rel="stylesheet">
 </head>
 <body>
-<h1>NOTES APP</h1>
+<div class="row between-xs headliner">
+  <div>
+    <h1>NOTES APP</h1>
+  </div>
+  <div>
+    <ion-icon name="moon-outline" id="theme-toggler" class="theme-icon"></ion-icon>
+  </div>
+</div>
+
 
 <div class="row">
 
@@ -24,7 +31,6 @@
       <div id="tool-bar">
         <div id="Basic">
           <input type="button" class="btn btn-primary" name="button_create" value="Create new todo">
-          <input type="button" class="btn btn-primary" name="button_style" value="Toggle Style" id="theme-toggler">
         </div>
         <!--<div id="Sorting">
           <input type="button" class="btn btn-primary" name="button_sortByName" value="Name">
@@ -99,6 +105,7 @@
     </div>
 
 </div>
-
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </body>
 </html>
