@@ -67,9 +67,10 @@
                                 <span class="title">{{title}}</span><br>
                                 <span class="description">{{description}}</span>
                             </div>
-                            <div>
+                            <div class="postactions">
                                 <span class="importance">Import. {{importance}}</span><br>
-                                <span class="edit"><a href="#" data-id="{{id}}">edit todo</a></span>
+                                <span><a href="#" data-postaction="edit" data-id="{{id}}"  class="linkbutton edit">edit</a></span>
+                                <span><a href="#" data-postaction="delete" data-id="{{id}}"  class="linkbutton delete">delete</a></span>
                             </div>
                         </div>
 

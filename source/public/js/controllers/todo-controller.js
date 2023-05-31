@@ -28,7 +28,6 @@ export class TodoController {
     loadTodos() {
 
         this.todos = this.todoService.getAllTodos();
-
         let todoHTML = "";
 
         function todoCompleted(completed){
@@ -67,8 +66,7 @@ export class TodoController {
         }
 
         const newObject = window.localStorage.getItem("todos");
-
-
+        console.log(newObject);
 
     }
 
@@ -76,8 +74,6 @@ export class TodoController {
 
     addTodo(todo) {
         const randomId = Math.floor(Math.random() * 1000000);
-
-
 
         this.todoService.createTodo({
             id: randomId+1,

@@ -30,8 +30,12 @@ body {
     --theme-duedate-color: #242b41;
     --theme-link-edit-color: #0c5ffa;
     --theme-link-edit-color-hover: #e1eafc;
-    --theme-link-edit-background: #eff2fc;
+    --theme-link-edit-background: #b6bac7;
     --theme-link-edit-background-hover: #7691f3;
+    --theme-link-delete-color: #fa0c44;
+    --theme-link-delete-color-hover: #f8c1d8;
+    --theme-link-delete-background: #f6b6ca;
+    --theme-link-delete-background-hover: #f37689;
 }
 
 .dark-theme {
@@ -46,6 +50,10 @@ body {
     --theme-link-edit-color-hover: #cdeac6;
     --theme-link-edit-background: #2e3a59;
     --theme-link-edit-background-hover: #2f7a28;
+    --theme-link-delete-color: #f8eff0;
+    --theme-link-delete-color-hover: #eac6ca;
+    --theme-link-delete-background: #a81424;
+    --theme-link-delete-background-hover: #9a071c;
 }
 
 .app-container {
@@ -121,4 +129,9 @@ h6 {
 
 #Basic {
     margin-bottom: 15px;
+}
+
+.importance {
+    display: inline-block;
+    margin-bottom: 5px;
 }
