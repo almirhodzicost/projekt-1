@@ -69,6 +69,7 @@ export class TodoController {
         const newObject = window.localStorage.getItem("todos");
 
 
+
     }
 
 
@@ -118,7 +119,7 @@ export class TodoController {
             importance: importanceInput.value,
             completed: CheckBoxCompleted(completedInput.value),
             createdAt: new Date(),
-            creationDate: new Date(),
+            creationDate: new Date()
         };
 
 
@@ -135,7 +136,7 @@ export class TodoController {
         this.formTodo.reset();
 
         // redirect to index.html
-        window.location.href = "http://localhost:3000/test.html";
+        window.location.href = "/";
     }
 }
 

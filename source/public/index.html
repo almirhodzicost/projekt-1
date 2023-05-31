@@ -1,101 +1,132 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8">
-  <title>Notes</title>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.3/handlebars.min.js" integrity="sha256-/PJBs6QWvXijOFIX04kZpLb6ZtSQckdOIavLWKKOgXU=" crossorigin="anonymous" defer></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
-  <script src="./js/index.js" type="module"></script>
-  <link rel="stylesheet" href="./styles/index.css">
-  <link rel="icon" type="image/x-icon" href="./img/favicon.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;700&family=Indie+Flower&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <title>Notes</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.3/handlebars.min.js" integrity="sha256-/PJBs6QWvXijOFIX04kZpLb6ZtSQckdOIavLWKKOgXU=" crossorigin="anonymous" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment-with-locales.min.js" integrity="sha512-42PE0rd+wZ2hNXftlM78BSehIGzezNeQuzihiBCvUEB3CVxHvsShF86wBWwQORNxNINlBPuq7rG4WWhNiTVHFg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="./js/app.js" type="module"></script>
+    <link rel="stylesheet" href="./css/index.css">
+    <link rel="icon" type="image/x-icon" href="./img/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;700&family=Indie+Flower&display=swap" rel="stylesheet">
 </head>
 <body>
 <div class="row between-xs headliner">
-  <div>
-    <h1>NOTES-APP</h1>
-  </div>
-  <div>
-    <ion-icon name="moon-outline" id="theme-toggler" class="theme-icon"></ion-icon>
-  </div>
+    <div>
+        <h1>TODO-APP</h1>
+    </div>
+    <div>
+       <ion-icon name="moon-outline" id="theme-toggler" class="theme-icon"></ion-icon>
+    </div>
 </div>
 
 
 <div class="row">
 
     <div class="col-xs-12 col-sm-7 app-container">
-      <h3>ENTRIES</h3>
-      <!--Toolbar-->
-      <div id="tool-bar">
-        <div id="Basic">
-          <input type="button" class="btn btn-primary" name="button_create" value="Create new todo">
-        </div>
-        <!--<div id="Sorting">
-          <input type="button" class="btn btn-primary" name="button_sortByName" value="Name">
-          <input type="button" class="btn btn-primary" name="button_sortByDueDate" value="by Due Date">
-          <input type="button" class="btn btn-primary" name="button_sortByCreationDate" value="by Creation Date">
-          <input type="button" class="btn btn-primary" name="button_sortByImportance" value="by Importance">
-          <input type="button" class="btn btn-primary" name="button_sortFilterCompleted" value="Filter Completed">
-        </div>-->
-      </div>
-      <!--ToDo Items-->
-      <div id="ToDoBox">
+        <h3>ENTRIES</h3>
 
-      </div>
+        <!--Toolbar-->
+        <div id="tool-bar">
+            <!--<div id="Basic">
+                <input type="button" class="btn btn-primary" name="button_create" value="Create new todo">
+            </div>-->
+            <div id="Sorting">
+              <input type="button" class="btn btn-primary" name="button_sortByName" value="Name">
+              <input type="button" class="btn btn-primary" name="button_sortByDueDate" value="by Due Date">
+              <input type="button" class="btn btn-primary" name="button_sortByCreationDate" value="by Creation Date">
+              <input type="button" class="btn btn-primary" name="button_sortByImportance" value="by Importance">
+              <input type="button" class="btn btn-primary" name="button_sortFilterCompleted" value="Filter Completed">
+            </div>
+        </div>
+
+
+
+        <!--ToDo Items-->
+        <div id="ToDoBox">
+            <div class="trenner"></div>
+            <div class="listBox" id="todoList">
+
+                <script id="todo-list-template" type="text/x-handlebars-template">
+
+                    <div class="items">
+                        <div class="table">
+                            <div>
+                                <span class="due-date">{{dueDate}}</span><br>
+                                <span class="completed">{{completed}}</span>
+                            </div>
+                            <div>
+                                <span class="title">{{title}}</span><br>
+                                <span class="description">{{description}}</span>
+                            </div>
+                            <div>
+                                <span class="importance">Import. {{importance}}</span><br>
+                                <span class="edit"><a href="#" data-id="{{id}}">edit todo</a></span>
+                            </div>
+                        </div>
+
+                    </div>
+                    </div>
+                    <div class="trenner"></div>
+                </script>
+            </div>
+        </div>
+
+
+
     </div>
 
     <div class="col-xs-12 col-sm-5 app-container">
-      <h3>FORM</h3>
-      <div class="form-container" id="FormBox">
-        <form>
-          <!--Input Title-->
-          <div class="form-group">
-            <label for="title">Title*</label>
-            <input type="text" id="title" name="title" placeholder="Please enter a title.."  required>
-          </div>
+        <h3>Create TODO</h3>
+        <div class="form-container" id="FormBox">
+            <form id="formTodo">
 
-          <!--Input Importance-->
-          <div class="form-group">
-            <label for="importance">Importance*</label>
-            <select name="importance" id="importance">
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-            </select>
-          </div>
+                <!--Input Title-->
+                <div class="form-group">
+                    <label for="title">Title*</label>
+                    <input type="text" id="title" name="title" placeholder="Please enter a title.."  required>
+                </div>
 
-          <!--Input Due Date-->
-          <div class="form-group">
-            <label for="due_date">Due Date*</label>
-            <input type="date" id="due_date" name="due_date" required>
-          </div>
+                <!--Input Importance-->
+                <div class="form-group">
+                    <label for="importance">Importance*</label>
+                    <select name="importance" id="importance">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                </div>
 
-          <!--Input Description-->
-          <div class="form-group">
-            <label for="description">Description*</label>
-            <textarea id="description" name="description" placeholder="Enter something..." required></textarea>
-          </div>
+                <!--Input Due Date-->
+                <div class="form-group">
+                    <label for="due_date">Due Date*</label>
+                    <input type="date" id="due_date" name="due_date" required>
+                </div>
 
-          <!--Input Done-->
-          <div class="form-group-checkbox">
-            <input type="checkbox" id="done" name="done" class="">
-            <label for="done" class="">Done</label>
-          </div>
+                <!--Input Description-->
+                <div class="form-group">
+                    <label for="description">Description*</label>
+                    <textarea id="description" name="description" placeholder="Enter something..." required></textarea>
+                </div>
 
-          <!--Actions-->
-          <div class="form-group-actions">
-            <input type="button" class="btn-xl btn-primary" name="submit_update" value="Save">
-            <!--<input type="button" class="btn-xl btn-success" name="submit_updateoverview" value="Update &amp; Overview">
-            <input type="button" class="btn-xl btn-secondary" name="submit_overview" value="Overview">-->
-          </div>
+                <!--Input Done-->
+                <div class="form-group-checkbox">
+                    <input type="checkbox" id="completed" name="completed" class="">
+                    <label for="completed" class="">Done</label>
+                </div>
 
-          <small class="form-hint">Felder markiert mit * sind Pflichtfelder.</small>
-        </form>
-      </div>
+                <!--Actions-->
+                <div class="form-group-actions">
+                    <input type="submit" class="btn-xl btn-primary" name="submit_update" value="Save">
+                </div>
+
+                <small class="form-hint">Felder markiert mit * sind Pflichtfelder.</small>
+            </form>
+        </div>
     </div>
 
 </div>

@@ -16,3 +16,25 @@
 .table > div:nth-child(3n+3) {
     background: transparent;
 }
+
+.items .table .due-date {
+    color: var(--theme-duedate-color);
+    font-size: 0.85em;
+    vertical-align: top;
+}
+
+.items .table .edit a {
+    color: var(--theme-link-edit-color);
+    background-color: var(--theme-link-edit-background);
+    font-size: 0.65em;
+    padding: 2px 6px 3px 6px;
+    text-decoration: none;
+    vertical-align: center;
+    border-radius: 3px;
+    text-transform: uppercase;
+}
+
+.items .table .edit a:hover {
+    color: var(--theme-link-edit-color-hover);
+    background-color: var(--theme-link-edit-background-hover);
+}

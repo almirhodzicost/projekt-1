@@ -11,18 +11,20 @@ export class TodoStorage {
                 {
                     id: 323027325235802,
                     title: "Einkaufen",
-                    description: "Orangensaft, Salat und Brot kaufen",
+                    description: "Orangensaft, Salat Müsliriegel",
                     completed: false,
-                    createdAt: new Date().toISOString(),
-                    dueDate: new Date().toISOString()
+                    importance: 1,
+                    createdAt: "2021-05-01",
+                    dueDate: "2021-05-01",
                 },
                 {
                     id: 124077173435056,
                     title: "Sport",
-                    description: "Fitness Bauch, Beine, Po",
+                    description: "Fitness Training im Studio",
                     completed: false,
-                    createdAt: new Date().toISOString(),
-                    dueDate: new Date().toISOString()
+                    importance: 4,
+                    createdAt: "2021-05-01",
+                    dueDate: "2021-05-01"
                 },
             ];
             this.saveTodos();
