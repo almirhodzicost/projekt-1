@@ -74,6 +74,7 @@ h6 {
 .items {
     display: flex;
     flex-direction: column;
+    padding: 10px 10px;
 }
 
 .items .todo {
@@ -93,11 +94,29 @@ h6 {
     cursor: pointer;
 }
 
+.completed-icon {
+    margin-top: 2px;
+    width: 22px;
+    height: 22px;
+    cursor: pointer;
+}
+
+.completed-icon.completed-yes {
+    color: #10cc10;
+}
+
+.completed-icon.completed-not {
+    color: #f6e5e5;
+}
+
+.row-completed {
+    background-color: #edf3db !important;
+}
+
 .trenner {
     height: 1px;
     display: block;
     background-color: var(--theme-divider-color);
-    margin: 10px 0;
 }
 
 #Basic {
