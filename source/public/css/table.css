@@ -28,9 +28,9 @@ a.linkbutton {
     padding: 2px 6px 3px 6px;
     text-decoration: none;
     vertical-align: center;
-    border-radius: 3px;
+    border-radius: 10px;
     text-transform: uppercase;
-    margin-right: 2px;
+    margin-right: 1px;
 }
 
 a.linkbutton.edit {
@@ -41,14 +41,16 @@ a.linkbutton.edit {
 a.linkbutton.edit:hover {
     color: var(--theme-link-edit-color-hover);
     background-color: var(--theme-link-edit-background-hover);
+    box-shadow: 1px 2px 5px var(--theme-link-edit-boxshadow);
 }
 
 a.linkbutton.delete {
     color: var(--theme-link-delete-color);
-    background-color: var(--theme-link-edit-background);
+    background-color: var(--theme-link-delete-background);
 }
 
 a.linkbutton.delete:hover {
     color: var(--theme-link-delete-color-hover);
     background-color: var(--theme-link-delete-background-hover);
+    box-shadow: 1px 2px 5px var(--theme-link-delete-boxshadow);
 }

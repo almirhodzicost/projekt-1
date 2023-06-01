@@ -28,14 +28,16 @@ body {
     --theme-form-border: #ccc;
     --theme-divider-color: #ccc;
     --theme-duedate-color: #242b41;
-    --theme-link-edit-color: #0c5ffa;
+    --theme-link-edit-color: #fff;
     --theme-link-edit-color-hover: #e1eafc;
-    --theme-link-edit-background: #b6bac7;
+    --theme-link-edit-background: #d9b9c2;
     --theme-link-edit-background-hover: #7691f3;
-    --theme-link-delete-color: #fa0c44;
-    --theme-link-delete-color-hover: #f8c1d8;
-    --theme-link-delete-background: #f6b6ca;
-    --theme-link-delete-background-hover: #f37689;
+    --theme-link-edit-boxshadow: #e1b4b4;
+    --theme-link-delete-color: #fff;
+    --theme-link-delete-color-hover: #fff;
+    --theme-link-delete-background: #d9b9c2;
+    --theme-link-delete-background-hover: #fd0202;
+    --theme-link-delete-boxshadow: #e1b4b4;
 }
 
 .dark-theme {
@@ -49,11 +51,13 @@ body {
     --theme-link-edit-color: #eff1f8;
     --theme-link-edit-color-hover: #cdeac6;
     --theme-link-edit-background: #2e3a59;
-    --theme-link-edit-background-hover: #2f7a28;
+    --theme-link-edit-background-hover: #7691f3;
+    --theme-link-edit-boxshadow: #28020e;
     --theme-link-delete-color: #f8eff0;
     --theme-link-delete-color-hover: #eac6ca;
     --theme-link-delete-background: #a81424;
     --theme-link-delete-background-hover: #9a071c;
+    --theme-link-delete-boxshadow: #28020e;
 }
 
 .app-container {
@@ -92,6 +96,7 @@ h6 {
 .items .todo .infos {
     background-color: lightgreen;
 }
+
 .items .todo .actions {
     background-color: lightcoral;
 }
@@ -125,10 +130,6 @@ h6 {
     height: 1px;
     display: block;
     background-color: var(--theme-divider-color);
-}
-
-#Basic {
-    margin-bottom: 15px;
 }
 
 .importance {
