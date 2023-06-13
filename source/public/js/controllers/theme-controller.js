@@ -2,6 +2,7 @@
 THEME SWITCHER
 ====================================================================
 */
+
 const themeToggle = (id) =>
 {
     const themeToggle = document.querySelector(id);

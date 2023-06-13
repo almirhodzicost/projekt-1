@@ -1,4 +1,5 @@
 import { todoService } from "../services/todo-service.js";
+import {todoStorage} from "../storage/todo-storage.js";
 
 export class TodoController {
     constructor() {
@@ -30,14 +31,6 @@ export class TodoController {
         this.todos = this.todoService.getAllTodos();
         let todoHTML = "";
 
-        function todoCompleted(completed){
-            if (this.completed === true) {
-                return "jepp";
-            } else {
-                return "nou";
-            }
-        }
-
         if (this.todoTemplateCompiled) {
             this.todos.forEach((todo) => {
                 const todoTemplate = this.todoTemplateCompiled(todo);
@@ -46,37 +39,50 @@ export class TodoController {
         }
 
         if (this.todoList) {
-
             this.todoList.innerHTML = todoHTML;
-
-            const deleteButtons = this.todoList.querySelectorAll(
-                ".listItem__buttons__deleteButton"
-            );
-
-            console.log("deleteButtons: ", deleteButtons);
-
+            const deleteButtons = this.todoList.querySelectorAll("[data-postaction=\"delete\"]");
+            const editButtons = this.todoList.querySelectorAll("[data-postaction=\"edit\"]");
+ 
             deleteButtons.forEach((deleteButton) => {
+                
                 deleteButton.addEventListener("click", (event) => {
-                    console.log("Delete button clicked");
-                    const todoId = event.target.dataset.id;
-                    this.deleteTodoById(todoId);
+                    const todoId = event.target.dataset.todoid;
+                    const todoTitle = event.target.dataset.todotitle;
+
+                    if (confirm("Eintrag: \"" + todoTitle + "\" löschen ?")) {
+                        this.deleteTodoById(todoId);
+                    }
                 });
             });
-
+            
+            editButtons.forEach((editButton) => {
+                editButton.addEventListener("click", (event) => {
+                    const todoId = event.target.dataset.todoid;
+                    const todoIndex = todoStorage.todos.find((todo) => todo.id === parseInt(todoId));
+                    const titleInput = document.querySelector("#title");
+                    const descriptionInput = document.querySelector("#description");
+                    const dueDateInput = document.querySelector("#due_date");
+                    const importanceInput = document.querySelector("#importance");
+                    const completedInput = document.querySelector("#completed");
+                    
+                    titleInput.value = todoIndex.title;
+                    descriptionInput.value = todoIndex.description;
+                    dueDateInput.value = todoIndex.dueDate;
+                    importanceInput.value = todoIndex.importance;
+                    completedInput.value = todoIndex.completed;
+                    //alert(todoIndex.title);
+                });
+            });
         }
-
-        const newObject = window.localStorage.getItem("todos");
-        console.log(newObject);
-
     }
 
 
 
     addTodo(todo) {
-        const randomId = Math.floor(Math.random() * 1000000);
+        const randomId = Math.floor(Math.random() * 1000);
 
         this.todoService.createTodo({
-            id: randomId+1,
+            id: randomId,
             ...todo,
         });
         this.loadTodos();

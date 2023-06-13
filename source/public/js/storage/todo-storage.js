@@ -9,7 +9,7 @@ export class TodoStorage {
         } else {
             this.todos = [
                 {
-                    id: 323027325235802,
+                    id: 5,
                     title: "Einkaufen",
                     description: "Orangensaft, Salat Müsliriegel",
                     completed: false,
@@ -18,13 +18,40 @@ export class TodoStorage {
                     dueDate: "2021-05-01",
                 },
                 {
-                    id: 124077173435056,
+                    id: 4,
                     title: "Sport",
-                    description: "Fitness Training im Studio",
+                    description: "Fussball in der Halle",
                     completed: false,
                     importance: 4,
                     createdAt: "2021-05-01",
                     dueDate: "2021-05-01"
+                },
+                {
+                    id: 3,
+                    title: "Fitness",
+                    description: "Fitness-Training im Studio",
+                    completed: true,
+                    importance: 4,
+                    createdAt: "2021-05-04",
+                    dueDate: "2021-05-10"
+                },
+                {
+                    id: 2,
+                    title: "Spazieren",
+                    description: "Mit FiFi im Wald spazieren",
+                    completed: true,
+                    importance: 1,
+                    createdAt: "2021-06-04",
+                    dueDate: "2021-06-10"
+                },
+                {
+                    id: 1,
+                    title: "Auto MFK",
+                    description: "Auto in MFK bringen",
+                    completed: false,
+                    importance: 1,
+                    createdAt: "2021-06-14",
+                    dueDate: "2021-06-14"
                 },
             ];
             this.saveTodos();
@@ -32,7 +59,6 @@ export class TodoStorage {
     }
 
     saveTodos() {
-        console.log("saveTodos");
         localStorage.setItem("todos", JSON.stringify(this.todos));
     }
 
