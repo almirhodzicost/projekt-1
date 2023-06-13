@@ -31,7 +31,7 @@ export class TodoController {
         let div = document.getElementById("myDiv");
         let span = document.getElementsByClassName("close")[0];
         
-        btn.onclick = function() {
+        btn.onclick = () => {
             modal.style.display = "block";
             div.style.backgroundColor = "#222231";
         }
@@ -41,7 +41,7 @@ export class TodoController {
             
         }
         
-        window.onclick = function(event) {
+        window.onclick = (event) => {
             if (event.target == modal) {
                 modal.style.display = "none";
             }
@@ -81,6 +81,13 @@ export class TodoController {
             
             editButtons.forEach((editButton) => {
                 editButton.addEventListener("click", (event) => {
+                    let modal = document.getElementById("myModal");
+                    let btn = document.getElementById("myBtn");
+                    let div = document.getElementById("myDiv");
+                    let span = document.getElementsByClassName("close")[0];
+                    
+                    modal.style.display = "block";
+                    div.style.backgroundColor = "#222231";
                     
                     const todoId = event.target.dataset.todoid;
                     const todoIndex = todoStorage.todos.find((todo) => todo.id === parseInt(todoId));

@@ -32,18 +32,18 @@
     <!--<div id="Basic">
         <input type="button" class="btn btn-primary" name="button_create" value="Create new todo">
     </div>-->
+
     <div id="Sorting">
+      <button id="myBtn" class="btn btn-primary" >Create TODO</button> Order by:
       <input type="button" class="btn btn-primary" name="button_sortByName" value="Name">
-      <input type="button" class="btn btn-primary" name="button_sortByDueDate" value="by Due Date">
-      <input type="button" class="btn btn-primary" name="button_sortByCreationDate" value="by Creation Date">
-      <input type="button" class="btn btn-primary" name="button_sortByImportance" value="by Importance">
-      <input type="button" class="btn btn-primary" name="button_sortFilterCompleted" value="Filter Completed">
+      <input type="button" class="btn btn-primary" name="button_sortByDueDate" value="Due Date">
+      <input type="button" class="btn btn-primary" name="button_sortByCreationDate" value="Creation Date">
+      <input type="button" class="btn btn-primary" name="button_sortByImportance" value="Importance">
+      <input type="button" class="btn btn-primary" name="button_sortFilterCompleted" value="Completed">
     </div>
 </div>
 
 <!--ToDo Items-->
-<button id="myBtn">Create TODO</button>
-
 <div id="ToDoBox">
     <div class="trenner"></div>
     <div class="listBox" id="todoList">
@@ -69,7 +69,7 @@
                     <div class="postactions">
                         <span class="importance">Import. {{importance}}</span><br>
                         <span><a href="javascript:void(0)" data-postaction="edit" data-todoid="{{id}}" class="linkbutton
-                            edit">edit</a></span>
+                            edit edit_button">edit</a></span>
                         <span><a href="javascript:void(0)" data-todotitle="{{title}}" data-postaction="delete" data-todoid="{{id}}"
                                  class="linkbutton
                         delete">delete</a></span>
