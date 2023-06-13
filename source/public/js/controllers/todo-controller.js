@@ -23,6 +23,30 @@ export class TodoController {
                 );
             }
         });
+        
+        // Modal
+        // ===================================================
+        let modal = document.getElementById("myModal");
+        let btn = document.getElementById("myBtn");
+        let div = document.getElementById("myDiv");
+        let span = document.getElementsByClassName("close")[0];
+        
+        btn.onclick = function() {
+            modal.style.display = "block";
+            div.style.backgroundColor = "#222231";
+        }
+        
+        span.onclick = function() {
+            modal.style.display = "none";
+            
+        }
+        
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+        // ---------------------------------------------------
 
     }
 
@@ -39,12 +63,12 @@ export class TodoController {
         }
 
         if (this.todoList) {
+            
             this.todoList.innerHTML = todoHTML;
             const deleteButtons = this.todoList.querySelectorAll("[data-postaction=\"delete\"]");
             const editButtons = this.todoList.querySelectorAll("[data-postaction=\"edit\"]");
  
             deleteButtons.forEach((deleteButton) => {
-                
                 deleteButton.addEventListener("click", (event) => {
                     const todoId = event.target.dataset.todoid;
                     const todoTitle = event.target.dataset.todotitle;
@@ -57,8 +81,10 @@ export class TodoController {
             
             editButtons.forEach((editButton) => {
                 editButton.addEventListener("click", (event) => {
+                    
                     const todoId = event.target.dataset.todoid;
                     const todoIndex = todoStorage.todos.find((todo) => todo.id === parseInt(todoId));
+                    
                     const titleInput = document.querySelector("#title");
                     const descriptionInput = document.querySelector("#description");
                     const dueDateInput = document.querySelector("#due_date");
@@ -70,7 +96,8 @@ export class TodoController {
                     dueDateInput.value = todoIndex.dueDate;
                     importanceInput.value = todoIndex.importance;
                     completedInput.value = todoIndex.completed;
-                    //alert(todoIndex.title);
+                    //save item in localstorage
+                    //localStorage.setItem("todoIndex", JSON.stringify(todoIndex));
                 });
             });
         }
@@ -97,7 +124,6 @@ export class TodoController {
         this.todoService.updateTodoById(id, updatedTodo);
         this.loadTodos();
     }
-
 
     handleformTodoSubmit(event) {
 

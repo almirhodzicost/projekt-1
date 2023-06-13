@@ -1,6 +1,7 @@
 @import "flexbox.css";
 @import "form.css";
 @import "table.css";
+@import "modal.css";
 
 * {
     box-sizing: border-box;

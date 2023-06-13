@@ -42,7 +42,7 @@
 </div>
 
 <!--ToDo Items-->
-<button id="myBtn">Create TODO</button>
+    <button id="myBtn">Open Modal</button>
 
 <div id="ToDoBox">
     <div class="trenner"></div>
@@ -86,56 +86,56 @@
 </div>
 </div>
 
-
+<div class="col-xs-12 col-sm-5 app-container">
+<h3>Create TODO</h3>
+<div class="form-container" id="FormBox">
+    <form id="formTodo">
+        <!--Input Title-->
+        <div class="form-group">
+            <label for="title">Title*</label>
+            <input type="text" id="title" name="title" placeholder="Please enter a title.."  required>
+        </div>
+        <!--Input Importance-->
+        <div class="form-group">
+            <label for="importance">Importance*</label>
+            <select name="importance" id="importance">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
+        </div>
+        <!--Input Due Date-->
+        <div class="form-group">
+            <label for="due_date">Due Date*</label>
+            <input type="date" id="due_date" name="due_date" required>
+        </div>
+        <!--Input Description-->
+        <div class="form-group">
+            <label for="description">Description*</label>
+            <textarea id="description" name="description" placeholder="Enter something..." required></textarea>
+        </div>
+        <!--Input Done-->
+        <div class="form-group-checkbox">
+            <input type="checkbox" id="completed" name="completed" class="">
+            <label for="completed" class="">Done</label>
+        </div>
+        <!--Actions-->
+        <div class="form-group-actions">
+            <input type="submit" class="btn-xl btn-primary" name="submit_update" value="Save">
+        </div>
+        <small class="form-hint">Felder markiert mit * sind Pflichtfelder.</small>
+    </form>
+</div>
+</div>
+</div>
 
 <div id="myModal" class="modal">
     <!-- Modal content -->
     <div class="modal-content" id="myDiv">
         <span class="close">&times;</span>
-        <div class="col-xs-12 col-sm-5 app-container">
-            <h3>Create TODO</h3>
-            <div class="form-container" id="FormBox">
-                <form id="formTodo">
-                    <!--Input Title-->
-                    <div class="form-group">
-                        <label for="title">Title*</label>
-                        <input type="text" id="title" name="title" placeholder="Please enter a title.."  required>
-                    </div>
-                    <!--Input Importance-->
-                    <div class="form-group">
-                        <label for="importance">Importance*</label>
-                        <select name="importance" id="importance">
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                        </select>
-                    </div>
-                    <!--Input Due Date-->
-                    <div class="form-group">
-                        <label for="due_date">Due Date*</label>
-                        <input type="date" id="due_date" name="due_date" required>
-                    </div>
-                    <!--Input Description-->
-                    <div class="form-group">
-                        <label for="description">Description*</label>
-                        <textarea id="description" name="description" placeholder="Enter something..." required></textarea>
-                    </div>
-                    <!--Input Done-->
-                    <div class="form-group-checkbox">
-                        <input type="checkbox" id="completed" name="completed" class="">
-                        <label for="completed" class="">Done</label>
-                    </div>
-                    <!--Actions-->
-                    <div class="form-group-actions">
-                        <input type="submit" class="btn-xl btn-primary" name="submit_update" value="Save">
-                    </div>
-                    <small class="form-hint">Felder markiert mit * sind Pflichtfelder.</small>
-                </form>
-            </div>
-        </div>
-    </div>
+        <p>Some text in the Modal..</p>
     </div>
 </div>
 
