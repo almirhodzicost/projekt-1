@@ -33,6 +33,7 @@ export class TodoController {
         
         btn.onclick = () => {
             modal.style.display = "block";
+            this.formTodo.reset();
             if (document.body.classList.contains("dark-theme")) {
                 div.style.backgroundColor = "#222231";
             } else {
@@ -41,7 +42,6 @@ export class TodoController {
         }
         
         span.onclick = function() {
-            this.formTodo.reset();
             modal.style.display = "none";
         }
         
