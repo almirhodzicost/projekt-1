@@ -33,21 +33,25 @@ export class TodoController {
         
         btn.onclick = () => {
             modal.style.display = "block";
-            div.style.backgroundColor = "#222231";
+            if (document.body.classList.contains("dark-theme")) {
+                div.style.backgroundColor = "#222231";
+            } else {
+                div.style.backgroundColor = "#ffffff";
+            }
         }
         
         span.onclick = function() {
+            this.formTodo.reset();
             modal.style.display = "none";
-            
         }
         
         window.onclick = (event) => {
             if (event.target == modal) {
+                this.formTodo.reset();
                 modal.style.display = "none";
             }
         }
         // ---------------------------------------------------
-
     }
 
     loadTodos() {
@@ -87,7 +91,11 @@ export class TodoController {
                     let span = document.getElementsByClassName("close")[0];
                     
                     modal.style.display = "block";
-                    div.style.backgroundColor = "#222231";
+                    if (document.body.classList.contains("dark-theme")) {
+                        div.style.backgroundColor = "#222231";
+                    } else {
+                        div.style.backgroundColor = "#ffffff";
+                    }
                     
                     const todoId = event.target.dataset.todoid;
                     const todoIndex = todoStorage.todos.find((todo) => todo.id === parseInt(todoId));
@@ -157,8 +165,6 @@ export class TodoController {
             creationDate: new Date()
         };
 
-
-
         // Add the new todo item.
         const randomId = Math.floor(Math.random() * 598989816519819);
 
@@ -169,9 +175,13 @@ export class TodoController {
 
         // Reset the form.
         this.formTodo.reset();
+        
+        let modal = document.getElementById("myModal");
+
+        modal.style.display = "none";
 
         // redirect to index.html
-        window.location.href = "/";
+        //window.location.href = "/";
     }
 }
 
