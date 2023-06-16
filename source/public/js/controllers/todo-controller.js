@@ -1,5 +1,5 @@
 import { todoService } from "../services/todo-service.js";
-import {todoStorage} from "../storage/todo-storage.js";
+import { todoStorage } from "../storage/todo-storage.js";
 
 export class TodoController {
     constructor() {
@@ -115,6 +115,31 @@ export class TodoController {
 
                     //todoService.updateTodoById(todoId, todoIndex);
                 });
+            });
+            
+            const updateButton = document.querySelector("#updateItemButton");
+            updateButton.addEventListener("click", (event) => {
+                
+                const idInput = document.querySelector("#id");
+                const titleInput = document.querySelector("#title");
+                const descriptionInput = document.querySelector("#description");
+                const dueDateInput = document.querySelector("#due_date");
+                const importanceInput = document.querySelector("#importance");
+                const completedInput = document.querySelector("#completed");
+                const modal = document.getElementById("myModal");
+                const todoId = idInput.value;
+                const todoIndex = todoStorage.todos.find((todo) => todo.id === parseInt(todoId));
+                
+                titleInput.value = todoIndex.title;
+                descriptionInput.value = todoIndex.description;
+                dueDateInput.value = todoIndex.dueDate;
+                importanceInput.value = todoIndex.importance;
+                completedInput.value = todoIndex.completed;
+                
+                alert(todoIndex.title);
+                /*todoService.updateTodoById(todoId, todoIndex);
+                modal.style.display = "none";*/
+                //alert(idInput.value);
             });
         }
     }
