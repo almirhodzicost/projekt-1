@@ -1,5 +1,4 @@
 import { todoService } from "../services/todo-service.js";
-import { todoStorage } from "../storage/todo-storage.js";
 
 export class TodoController {
     
@@ -12,18 +11,13 @@ export class TodoController {
     }
     // ---------------------------------------------------
     
-    CheckBoxed(input) {
-        return input.checked;
-    }
     
+    // Constructor
+    // ===================================================
     constructor() {
-
         const todoTemplateElement = document.querySelector("#todo-list-template");
-
         if (todoTemplateElement) {
-            this.todoTemplateCompiled = Handlebars.compile(
-                todoTemplateElement.innerHTML
-            );
+            this.todoTemplateCompiled = Handlebars.compile(todoTemplateElement.innerHTML);
         }
 
         this.todoService = todoService;
@@ -54,11 +48,9 @@ export class TodoController {
                 div.style.backgroundColor = "#ffffff";
             }
         }
-        
         span.onclick = function() {
             modal.style.display = "none";
         }
-        
         window.onclick = (event) => {
             if (event.target == modal) {
                 this.formTodo.reset();
@@ -67,7 +59,11 @@ export class TodoController {
         }
         // ---------------------------------------------------
     }
-
+    // ---------------------------------------------------
+    
+    
+    // Current Date
+    // ===================================================
     currentDate() {
         const date = new Date();
         
@@ -77,9 +73,12 @@ export class TodoController {
         
         return `${day}-${month}-${year}`;
     }
+    // ---------------------------------------------------
     
+    
+    // Load Todos
+    // ===================================================
     loadTodos() {
-
         this.todos = this.todoService.getAllTodos();
         let todoHTML = "";
 
@@ -91,11 +90,11 @@ export class TodoController {
         }
 
         if (this.todoList) {
-            
             this.todoList.innerHTML = todoHTML;
             const deleteButtons = this.todoList.querySelectorAll("[data-postaction=\"delete\"]");
             const editButtons = this.todoList.querySelectorAll("[data-postaction=\"edit\"]");
- 
+            const updateButton = document.querySelector("#updateItemButton");
+            
             deleteButtons.forEach((deleteButton) => {
                 deleteButton.addEventListener("click", (event) => {
                     const todoId = event.target.dataset.todoid;
@@ -120,7 +119,7 @@ export class TodoController {
                     }
                     
                     const todoId = event.target.dataset.todoid;
-                    const todoIndex = todoStorage.todos.find((todo) => todo.id === parseInt(todoId));
+                    const todoIndex = todoService.todoStorage.todos.find((todo) => todo.id === parseInt(todoId));
 
                     const idInput = document.querySelector("#id");
                     const titleInput = document.querySelector("#title");
@@ -137,8 +136,6 @@ export class TodoController {
                     completedInput.value = todoIndex.completed;
                 });
             });
-            
-            const updateButton = document.querySelector("#updateItemButton");
             updateButton.addEventListener("click", (event) => {
                 
                 const idInput = document.querySelector("#id");
@@ -149,7 +146,7 @@ export class TodoController {
                 const completedInput = document.querySelector("#completed");
                 const modal = document.getElementById("myModal");
                 const todoId = idInput.value;
-                const todoIndex = todoStorage.todos.find((todo) => todo.id === parseInt(todoId));
+                const todoIndex = todoService.todoStorage.todos.find((todo) => todo.id === parseInt(todoId));
                 
                 function CheckBoxCompleted(input) {
                     return completedInput.checked;
@@ -166,7 +163,11 @@ export class TodoController {
             });
         }
     }
-
+    // ---------------------------------------------------
+    
+    
+    // Add Todos
+    // ===================================================
     addTodo(todo) {
         const randomId = this.UniqueId();
         this.todoService.createTodo({
@@ -175,17 +176,29 @@ export class TodoController {
         });
         this.loadTodos();
     }
-
+    // ---------------------------------------------------
+    
+    
+    // Delete Todos
+    // ===================================================
     deleteTodoById(id) {
         this.todoService.deleteTodoById(id);
         this.loadTodos();
     }
-
+    // ---------------------------------------------------
+    
+    
+    // Update Todos
+    // ===================================================
     updateTodoById(id, updatedTodo) {
         todoService.updateTodoById(id, updatedTodo);
         this.loadTodos();
     }
-
+    // ---------------------------------------------------
+    
+    
+    // Form handle
+    // ===================================================
     handleformTodoSubmit(event) {
         event.preventDefault();
         // Data from the form.
@@ -224,6 +237,7 @@ export class TodoController {
         modal.style.display = "none";
         // ---------------------------------------------------
     }
+    // ---------------------------------------------------
 }
 
 export const todoController = new TodoController();
