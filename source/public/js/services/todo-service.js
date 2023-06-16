@@ -21,10 +21,11 @@ export class TodoService {
     deleteTodoById(id) {
         this.todoStorage.deleteTodoById(id);
     }
-
+    
     updateTodoById(id, updatedTodo) {
         const todoIndex = this.todoStorage.todos.findIndex((todo) => todo.id === id);
         this.todoStorage.todos[todoIndex] = updatedTodo;
+        this.todoStorage.saveTodos();
     }
 }
 

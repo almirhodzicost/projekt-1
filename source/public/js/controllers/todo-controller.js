@@ -105,7 +105,6 @@ export class TodoController {
                     }
                 });
             });
-            
             editButtons.forEach((editButton) => {
                 editButton.addEventListener("click", (event) => {
                     let modal = document.getElementById("myModal");
@@ -152,11 +151,15 @@ export class TodoController {
                 const todoId = idInput.value;
                 const todoIndex = todoStorage.todos.find((todo) => todo.id === parseInt(todoId));
                 
+                function CheckBoxCompleted(input) {
+                    return completedInput.checked;
+                }
+                
                 todoIndex.title = titleInput.value;
                 todoIndex.description = descriptionInput.value;
                 todoIndex.dueDate = dueDateInput.value;
                 todoIndex.importance = importanceInput.value;
-                todoIndex.completed = completedInput.value;
+                todoIndex.completed = CheckBoxCompleted(completedInput.value);
 
                 this.updateTodoById(todoId, todoIndex);
                 modal.style.display = "none";
@@ -179,7 +182,7 @@ export class TodoController {
     }
 
     updateTodoById(id, updatedTodo) {
-        this.todoService.updateTodoById(id, updatedTodo);
+        todoService.updateTodoById(id, updatedTodo);
         this.loadTodos();
     }
 
@@ -203,8 +206,8 @@ export class TodoController {
             dueDate: dueDateInput.value,
             importance: importanceInput.value,
             completed: CheckBoxCompleted(completedInput.value),
-            createdAt: this.currentDate(),
-            creationDate: this.currentDate(),
+            createdAt: new Date(),
+            creationDate: new Date(),
         };
 
         const randomId = this.UniqueId();

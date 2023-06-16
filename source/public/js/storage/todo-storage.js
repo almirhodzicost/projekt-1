@@ -3,7 +3,7 @@ export class TodoStorage {
     constructor() {
 
         const storedTodos = localStorage.getItem("todos");
-
+ 
         if (storedTodos) {
             this.todos = JSON.parse(storedTodos);
         } else {
