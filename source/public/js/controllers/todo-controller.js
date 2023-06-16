@@ -2,6 +2,20 @@ import { todoService } from "../services/todo-service.js";
 import { todoStorage } from "../storage/todo-storage.js";
 
 export class TodoController {
+    
+    // Create Unique ID
+    // ===================================================
+    UniqueId() {
+        const d = new Date();
+        let ms = d.getMilliseconds();
+        return Math.floor(Math.random() * 65465165651646416 + ms);
+    }
+    // ---------------------------------------------------
+    
+    CheckBoxed(input) {
+        return input.checked;
+    }
+    
     constructor() {
 
         const todoTemplateElement = document.querySelector("#todo-list-template");
@@ -54,6 +68,16 @@ export class TodoController {
         // ---------------------------------------------------
     }
 
+    currentDate() {
+        const date = new Date();
+        
+        let day = date.getDate();
+        let month = date.getMonth() + 1;
+        let year = date.getFullYear();
+        
+        return `${day}-${month}-${year}`;
+    }
+    
     loadTodos() {
 
         this.todos = this.todoService.getAllTodos();
@@ -98,8 +122,7 @@ export class TodoController {
                     
                     const todoId = event.target.dataset.todoid;
                     const todoIndex = todoStorage.todos.find((todo) => todo.id === parseInt(todoId));
-                    const todoIndex2 = todoService.getTodoById(todoId);
-                    
+
                     const idInput = document.querySelector("#id");
                     const titleInput = document.querySelector("#title");
                     const descriptionInput = document.querySelector("#description");
@@ -134,22 +157,15 @@ export class TodoController {
                 todoIndex.dueDate = dueDateInput.value;
                 todoIndex.importance = importanceInput.value;
                 todoIndex.completed = completedInput.value;
-                
-                //alert(todoIndex.title);
-                //this.updateTodoById(todoId, todoIndex);
+
                 this.updateTodoById(todoId, todoIndex);
-                
                 modal.style.display = "none";
-                //alert(idInput.value);
             });
         }
     }
 
-
-
     addTodo(todo) {
-        const randomId = Math.floor(Math.random() * 1000);
-
+        const randomId = this.UniqueId();
         this.todoService.createTodo({
             id: randomId,
             ...todo,
@@ -168,10 +184,9 @@ export class TodoController {
     }
 
     handleformTodoSubmit(event) {
-
         event.preventDefault();
-
-        // Extract the data from the form.
+        // Data from the form.
+        // ===================================================
         const titleInput = document.querySelector("#title");
         const descriptionInput = document.querySelector("#description");
         const dueDateInput = document.querySelector("#due_date");
@@ -188,12 +203,11 @@ export class TodoController {
             dueDate: dueDateInput.value,
             importance: importanceInput.value,
             completed: CheckBoxCompleted(completedInput.value),
-            createdAt: new Date(),
-            creationDate: new Date()
+            createdAt: this.currentDate(),
+            creationDate: this.currentDate(),
         };
 
-        // Add the new todo item.
-        const randomId = Math.floor(Math.random() * 598989816519819);
+        const randomId = this.UniqueId();
 
         this.addTodo({
             id:randomId,
@@ -201,14 +215,11 @@ export class TodoController {
         });
 
         // Reset the form.
+        // ===================================================
         this.formTodo.reset();
-        
-        let modal = document.getElementById("myModal");
-
+        const modal = document.getElementById("myModal");
         modal.style.display = "none";
-
-        // redirect to index.html
-        //window.location.href = "/";
+        // ---------------------------------------------------
     }
 }
 

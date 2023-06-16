@@ -1,5 +1,5 @@
 export class TodoStorage {
-
+    
     constructor() {
 
         const storedTodos = localStorage.getItem("todos");
@@ -9,7 +9,7 @@ export class TodoStorage {
         } else {
             this.todos = [
                 {
-                    id: 5,
+                    id: 1,
                     title: "Einkaufen",
                     description: "Orangensaft, Salat Müsliriegel",
                     completed: false,
@@ -18,16 +18,7 @@ export class TodoStorage {
                     dueDate: "2021-05-01",
                 },
                 {
-                    id: 4,
-                    title: "Sport",
-                    description: "Fussball in der Halle",
-                    completed: false,
-                    importance: 4,
-                    createdAt: "2021-05-01",
-                    dueDate: "2021-05-01"
-                },
-                {
-                    id: 3,
+                    id: 2,
                     title: "Fitness",
                     description: "Fitness-Training im Studio",
                     completed: true,
@@ -36,23 +27,14 @@ export class TodoStorage {
                     dueDate: "2021-05-10"
                 },
                 {
-                    id: 2,
+                    id: 3,
                     title: "Spazieren",
                     description: "Mit FiFi im Wald spazieren",
                     completed: true,
                     importance: 1,
                     createdAt: "2021-06-04",
                     dueDate: "2021-06-10"
-                },
-                {
-                    id: 1,
-                    title: "Auto MFK",
-                    description: "Auto in MFK bringen",
-                    completed: false,
-                    importance: 1,
-                    createdAt: "2021-06-14",
-                    dueDate: "2021-06-14"
-                },
+                }
             ];
             this.saveTodos();
         }
