@@ -99,20 +99,21 @@ export class TodoController {
                     
                     const todoId = event.target.dataset.todoid;
                     const todoIndex = todoStorage.todos.find((todo) => todo.id === parseInt(todoId));
-                    
+                    const idInput = document.querySelector("#id");
                     const titleInput = document.querySelector("#title");
                     const descriptionInput = document.querySelector("#description");
                     const dueDateInput = document.querySelector("#due_date");
                     const importanceInput = document.querySelector("#importance");
                     const completedInput = document.querySelector("#completed");
                     
+                    idInput.value = todoIndex.id;
                     titleInput.value = todoIndex.title;
                     descriptionInput.value = todoIndex.description;
                     dueDateInput.value = todoIndex.dueDate;
                     importanceInput.value = todoIndex.importance;
                     completedInput.value = todoIndex.completed;
-                    //save item in localstorage
-                    //localStorage.setItem("todoIndex", JSON.stringify(todoIndex));
+
+                    //todoService.updateTodoById(todoId, todoIndex);
                 });
             });
         }
