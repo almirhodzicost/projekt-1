@@ -76,8 +76,7 @@ export class TodoController {
                 deleteButton.addEventListener("click", (event) => {
                     const todoId = event.target.dataset.todoid;
                     const todoTitle = event.target.dataset.todotitle;
-
-                    if (confirm("Eintrag: \"" + todoTitle + "\" löschen ?")) {
+                    if (confirm("Todo: \"" + todoTitle + "\" delete ?")) {
                         this.deleteTodoById(todoId);
                     }
                 });
@@ -99,6 +98,8 @@ export class TodoController {
                     
                     const todoId = event.target.dataset.todoid;
                     const todoIndex = todoStorage.todos.find((todo) => todo.id === parseInt(todoId));
+                    const todoIndex2 = todoService.getTodoById(todoId);
+                    
                     const idInput = document.querySelector("#id");
                     const titleInput = document.querySelector("#title");
                     const descriptionInput = document.querySelector("#description");
@@ -112,8 +113,6 @@ export class TodoController {
                     dueDateInput.value = todoIndex.dueDate;
                     importanceInput.value = todoIndex.importance;
                     completedInput.value = todoIndex.completed;
-
-                    //todoService.updateTodoById(todoId, todoIndex);
                 });
             });
             
@@ -130,15 +129,17 @@ export class TodoController {
                 const todoId = idInput.value;
                 const todoIndex = todoStorage.todos.find((todo) => todo.id === parseInt(todoId));
                 
-                titleInput.value = todoIndex.title;
-                descriptionInput.value = todoIndex.description;
-                dueDateInput.value = todoIndex.dueDate;
-                importanceInput.value = todoIndex.importance;
-                completedInput.value = todoIndex.completed;
+                todoIndex.title = titleInput.value;
+                todoIndex.description = descriptionInput.value;
+                todoIndex.dueDate = dueDateInput.value;
+                todoIndex.importance = importanceInput.value;
+                todoIndex.completed = completedInput.value;
                 
-                alert(todoIndex.title);
-                /*todoService.updateTodoById(todoId, todoIndex);
-                modal.style.display = "none";*/
+                //alert(todoIndex.title);
+                //this.updateTodoById(todoId, todoIndex);
+                this.updateTodoById(todoId, todoIndex);
+                
+                modal.style.display = "none";
                 //alert(idInput.value);
             });
         }
