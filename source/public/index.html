@@ -96,9 +96,10 @@
                 <form id="formTodo">
                     <!--Input Title-->
                     <input type="hidden" id="id" value="">
+                    <input type="hidden" id="eventType" value="save">
                     <div class="form-group">
                         <label for="title">Title*</label>
-                        <input type="text" id="title" name="title" placeholder="Please enter a title.."  required>
+                        <input type="text" id="title" name="title" placeholder="Please enter a title.." required>
                     </div>
                     <!--Input Importance-->
                     <div class="form-group">
@@ -127,11 +128,11 @@
                         <label for="completed" class="">Done</label>
                     </div>
                     <!--Actions-->
-                    <div class="form-group-actions">
+                    <div class="form-group-actions" id="saveButtonDiv">
                         <input type="submit" class="btn-xl btn-primary" value="Save">
                     </div>
 
-                    <div class="form-group-actions">
+                    <div class="form-group-actions" id="updateButtonDiv">
                         <input type="button" class="btn-xl btn-primary" id="updateItemButton" value="Update">
                     </div>
                     <small class="form-hint">Felder markiert mit * sind Pflichtfelder.</small>
