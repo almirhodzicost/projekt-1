@@ -114,9 +114,10 @@ export class TodoController {
                     const modal = helper.gE("myModal");
                     const div = helper.gE("myDiv");
                     const modus = helper.gE("modus");
-                    modus.textContent = "Edit";
 
+                    modus.textContent = "Edit";
                     modal.style.display = "block";
+                    
                     if (document.body.classList.contains("dark-theme")) {
                         div.style.backgroundColor = "#222231";
                     } else {
@@ -125,13 +126,14 @@ export class TodoController {
                     
                     const todoId = event.target.dataset.todoid;
                     const todoIndex = todoService.todoStorage.todos.find((todo) => todo.id === parseInt(todoId));
-
                     const id = helper.qS("#id");
                     const title = helper.qS("#title");
                     const description = helper.qS("#description");
                     const dueDate = helper.qS("#due_date");
                     const importance = helper.qS("#importance");
                     const completed = helper.qS("#completed");
+                    
+                    if(todoIndex.completed === true) { completed.checked = true; }
                     
                     id.value = todoIndex.id;
                     title.value = todoIndex.title;
