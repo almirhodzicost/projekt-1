@@ -18,18 +18,6 @@ export class Helper {
     cBChecked(checkbox) {
         return checkbox.checked;
     }
-    
-    showActionButton(action) {
-        
-        if(action == "update"){
-            this.qS("#updateButtonDiv").style.display = "block";
-            this.qS("#saveButtonDiv").style.display = "none";
-        }
-        else {
-            this.qS("#updateButtonDiv").style.display = "none";
-            this.qS("#saveButtonDiv").style.display = "block";
-        }
-    }
 }
 
 export const helper = new Helper();

@@ -43,7 +43,9 @@ export class TodoController {
         btn.onclick = () => {
             modal.style.display = "block";
             this.formTodo.reset();
-            helper.showActionButton("save");
+            const modus = helper.gE("modus");
+            modus.textContent = "Create";
+            
             if (document.body.classList.contains("dark-theme")) {
                 div.style.backgroundColor = "#222231";
             } else {
@@ -100,7 +102,6 @@ export class TodoController {
                 deleteButton.addEventListener("click", (event) => {
                     const todoId = event.target.dataset.todoid;
                     const todoTitle = event.target.dataset.todotitle;
-    
                     if (confirm("Delete \"" + todoTitle + "\" todo?")) {
                         this.deleteTodoById(todoId);
                     }
@@ -112,11 +113,10 @@ export class TodoController {
                     
                     const modal = helper.gE("myModal");
                     const div = helper.gE("myDiv");
+                    const modus = helper.gE("modus");
+                    modus.textContent = "Edit";
 
                     modal.style.display = "block";
-                    
-                    helper.showActionButton("update");
-                    
                     if (document.body.classList.contains("dark-theme")) {
                         div.style.backgroundColor = "#222231";
                     } else {
@@ -140,28 +140,6 @@ export class TodoController {
                     importance.value = todoIndex.importance;
                     completed.value = todoIndex.completed;
                 });
-            });
-            
-            updateButton.addEventListener("click", (event) => {
-                const id = helper.qS("#id");
-                const title = helper.qS("#title");
-                const description = helper.qS("#description");
-                const dueDate = helper.qS("#due_date");
-                const importance = helper.qS("#importance");
-                const completed = helper.qS("#completed");
-                const modal = helper.gE("myModal");
-                
-                const todoId = id.value;
-                const todoIndex = todoService.todoStorage.todos.find((todo) => todo.id === parseInt(todoId));
-                
-                todoIndex.title = title.value;
-                todoIndex.description = description.value;
-                todoIndex.dueDate = dueDate.value;
-                todoIndex.importance = importance.value;
-                todoIndex.completed = helper.cBChecked(completed);
-
-                this.updateTodoById(todoId, todoIndex);
-                modal.style.display = "none";
             });
         }
     }
@@ -205,16 +183,13 @@ export class TodoController {
         event.preventDefault();
         // Data from the form.
         // ===================================================
-        const id = helper.qS("#id");
-        const title = helper.qS("#title");
-        const description = helper.qS("#description");
-        const dueDate = helper.qS("#due_date");
-        const importance = helper.qS("#importance");
-        const completed = helper.qS("#completed");
-
-        function CheckBoxCompleted(input) {
-            return completed.checked;
-        }
+        const todoId = document.querySelector("#id");
+        const title = document.querySelector("#title");
+        const description = document.querySelector("#description");
+        const dueDate = document.querySelector("#due_date");
+        const importance = document.querySelector("#importance");
+        const completed = document.querySelector("#completed");
+        function CheckBoxCompleted(input) { return completed.checked;}
 
         const todo = {
             title: title.value,
@@ -226,17 +201,30 @@ export class TodoController {
             creationDate: new Date(),
         };
 
-        const randomId = this.UniqueId();
-
-        this.addTodo({
-            id:randomId,
-            ...todo,
-        });
+        if(todoId.value !== "")
+        {
+            // Update todo
+            // ===================================================
+            const todoUpdate = todoService.todoStorage.todos.find((todo) => todo.id === parseInt(todoId.value));
+            todoUpdate.title = title.value;
+            todoUpdate.description = description.value;
+            todoUpdate.dueDate = dueDate.value;
+            todoUpdate.importance = importance.value;
+            todoUpdate.completed = helper.cBChecked(completed);
+            this.updateTodoById(todoUpdate.id, todoUpdate);
+            todoId.value = "";
+            // ---------------------------------------------------
+        } else {
+            // Add todo
+            // ===================================================
+            this.addTodo(todo);
+            // ---------------------------------------------------
+        }
 
         // Reset the form.
         // ===================================================
         this.formTodo.reset();
-        const modal = document.getElementById("myModal");
+        const modal = helper.gE("myModal");
         modal.style.display = "none";
         // ---------------------------------------------------
     }
