@@ -11,6 +11,7 @@ export class TodoController {
         return Math.floor(Math.random() * 65465165651646416 + ms);
     }
     // ---------------------------------------------------
+
     
     // Constructor
     // ===================================================
@@ -42,18 +43,18 @@ export class TodoController {
         btn.onclick = () => {
             modal.style.display = "block";
             this.formTodo.reset();
-            
             helper.showActionButton("save");
-            
             if (document.body.classList.contains("dark-theme")) {
                 div.style.backgroundColor = "#222231";
             } else {
                 div.style.backgroundColor = "#ffffff";
             }
         }
+        
         span.onclick = function() {
             modal.style.display = "none";
         }
+        
         window.onclick = (event) => {
             if (event.target == modal) {
                 this.formTodo.reset();
@@ -78,7 +79,6 @@ export class TodoController {
 
     // Load Todos
     // ===================================================
-
     loadTodos() {
         this.todos = this.todoService.getAllTodos();
         let todoHTML = "";
@@ -111,9 +111,7 @@ export class TodoController {
                 editButton.addEventListener("click", (event) => {
                     
                     const modal = helper.gE("myModal");
-                    const btn = helper.gE("myBtn");
                     const div = helper.gE("myDiv");
-                    const span = helper.gECN("close")[0];
 
                     modal.style.display = "block";
                     
@@ -207,6 +205,7 @@ export class TodoController {
         event.preventDefault();
         // Data from the form.
         // ===================================================
+        const id = helper.qS("#id");
         const title = helper.qS("#title");
         const description = helper.qS("#description");
         const dueDate = helper.qS("#due_date");
