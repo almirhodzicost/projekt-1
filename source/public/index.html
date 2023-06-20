@@ -2,7 +2,7 @@
 <html lang="de">
 <head>
 <meta charset="UTF-8">
-<title>Notes</title>
+<title>Todo App</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.3/handlebars.min.js" integrity="sha256-/PJBs6QWvXijOFIX04kZpLb6ZtSQckdOIavLWKKOgXU=" crossorigin="anonymous" defer></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment-with-locales.min.js" integrity="sha512-42PE0rd+wZ2hNXftlM78BSehIGzezNeQuzihiBCvUEB3CVxHvsShF86wBWwQORNxNINlBPuq7rG4WWhNiTVHFg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="./js/app.js" type="module"></script>
@@ -15,86 +15,75 @@
 </head>
 <body >
 <div class="row between-xs headliner">
-    <div>
-        <h1>TODO-APP</h1>
-    </div>
-    <div>
-        <ion-icon name="moon-outline" id="theme-toggler" class="theme-icon"></ion-icon>
-    </div>
+    <div><h1>TODO APP</h1></div>
+    <div><ion-icon name="moon-outline" id="theme-toggler" class="theme-icon"></ion-icon></div>
 </div>
 
 <div class="row">
 <div class="col-xs-12 col-sm-12  app-container">
 <h3>ENTRIES</h3>
 
-<!--Toolbar-->
 <div id="tool-bar">
     <div id="Sorting">
       <button id="myBtn" class="btn btn-primary" data-create="yes">Create TODO</button>
         Order by:
-      <input type="button" class="btn btn-primary" name="button_sortByName" value="Name">
-      <input type="button" class="btn btn-primary" name="button_sortByDueDate" value="dueDate">
-      <input type="button" class="btn btn-primary" name="button_sortByImportance" value="Importance">
-      <input type="button" class="btn btn-primary" name="button_sortFilterCompleted" value="Completed">
+      <button class="btn btn-primary" id="sortByName">Name</button>
+      <button class="btn btn-primary" id="sortByDueDate"">dueDate</button>
+      <button class="btn btn-primary" id="sortByImportance">Importance</button>
+      <button class="btn btn-primary" id="sortbyCompleted">Completed</button>
     </div>
 </div>
 
-<!--ToDo Items-->
 <div id="ToDoBox">
     <div class="trenner"></div>
-    <div class="listBox" id="todoList">
+        <div class="listBox" id="todoList">
         <script id="todo-list-template" type="text/x-handlebars-template">
             <div class="items">
                 <div class="table">
-                    <div>
-                        <span class="due-date">{{dueDate}}</span><br>
-                        <span class="completed">
-                            {{#if completed}}
-                                <ion-icon name="checkmark-circle-outline" class="completed-icon completed-yes"></ion-icon>
-                            {{else}}
-                                <ion-icon name="stop-outline" class="completed-icon completed-not"></ion-icon>
-                            {{/if}}
-                        </span>
-                    </div>
-                    <div>
-                        <span class="title">{{title}}</span><br>
-                        <span class="description">{{description}}</span>
-                    </div>
-                    <div class="postactions">
-                        <span class="importance">Import. {{importance}}</span><br>
-                        <span><a href="javascript:void(0)" data-postaction="edit" data-todoid="{{id}}" class="linkbutton
-                            edit edit_button">edit</a></span>
-                        <span><a href="javascript:void(0)" data-todotitle="{{title}}" data-postaction="delete" data-todoid="{{id}}"
-                                 class="linkbutton
-                        delete">delete</a></span>
-                    </div>
+                <div>
+                    <span class="due-date">{{dueDate}}</span><br>
+                    <span class="completed">
+                        {{#if completed}}
+                        <ion-icon name="checkmark-circle-outline" class="completed-icon completed-yes"></ion-icon>
+                        {{else}}
+                        <ion-icon name="stop-outline" class="completed-icon completed-not"></ion-icon>
+                        {{/if}}
+                    </span>
                 </div>
-            </div>
-            </div>
-            <div class="trenner"></div>
-        </script>
+            <div>
+            <span class="title">{{title}}</span><br>
+            <span class="description">{{description}}</span>
+        </div>
+        <div class="postactions">
+            <span class="importance">Import. {{importance}}</span><br>
+            <span><a href="javascript:void(0)" data-postaction="edit" data-todoid="{{id}}" class="linkbutton edit edit_button">edit</a></span>
+            <span><a href="javascript:void(0)" data-todotitle="{{title}}" data-postaction="delete" data-todoid="{{id}}" class="linkbutton delete">delete</a></span>
+        </div>
     </div>
-    </div>
-    </div>
+</div>
+</div>
+<div class="trenner"></div>
+</script>
+</div>
+
+</div>
+</div>
 </div>
 </div>
 
 <div id="myModal" class="modal">
-    <!-- Modal content -->
     <div class="modal-content" id="myDiv">
         <span class="close">&times;</span>
         <div class="col-xs-12 col-sm-12 app-container">
             <h3><span id="modus">Create</span> TODO</h3>
             <div class="form-container" id="FormBox">
                 <form id="formTodo">
-                    <!--Input Title-->
                     <input type="hidden" id="id" value="">
                     <input type="hidden" id="eventType" value="save">
                     <div class="form-group">
                         <label for="title">Title*</label>
                         <input type="text" id="title" name="title" placeholder="Please enter a title.." required>
                     </div>
-                    <!--Input Importance-->
                     <div class="form-group">
                         <label for="importance">Importance*</label>
                         <select name="importance" id="importance">
@@ -105,22 +94,18 @@
                             <option value="5">5</option>
                         </select>
                     </div>
-                    <!--Input Due Date-->
                     <div class="form-group">
                         <label for="due_date">Due Date*</label>
                         <input type="date" id="due_date" name="due_date" required>
                     </div>
-                    <!--Input Description-->
                     <div class="form-group">
                         <label for="description">Description*</label>
                         <textarea id="description" name="description" placeholder="Enter something..." required></textarea>
                     </div>
-                    <!--Input Done-->
                     <div class="form-group-checkbox">
                         <input type="checkbox" id="completed" name="completed">
                         <label for="completed" class="">Done</label>
                     </div>
-                    <!--Actions-->
                     <div class="form-group-actions">
                         <input type="submit" class="btn-xl btn-primary" value="Save">
                     </div>
@@ -129,9 +114,8 @@
             </div>
         </div>
     </div>
-    </div>
 </div>
-
+</div>
 <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </body>

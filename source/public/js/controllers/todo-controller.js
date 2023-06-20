@@ -11,7 +11,7 @@ export class TodoController {
         return Math.floor(Math.random() * 65465165651646416 + ms);
     }
     // ---------------------------------------------------
-
+    
     
     // Constructor
     // ===================================================
@@ -79,6 +79,7 @@ export class TodoController {
     }
     // ---------------------------------------------------
 
+    
     // Load Todos
     // ===================================================
     loadTodos() {
@@ -96,8 +97,6 @@ export class TodoController {
             this.todoList.innerHTML = todoHTML;
             const deleteButtons = this.todoList.querySelectorAll("[data-postaction='delete']");
             const editButtons = this.todoList.querySelectorAll("[data-postaction='edit']");
-            const updateButton = helper.qS("#updateItemButton");
-            
             deleteButtons.forEach((deleteButton) => {
                 deleteButton.addEventListener("click", (event) => {
                     const todoId = event.target.dataset.todoid;
@@ -110,10 +109,17 @@ export class TodoController {
             
             editButtons.forEach((editButton) => {
                 editButton.addEventListener("click", (event) => {
-                    
                     const modal = helper.gE("myModal");
                     const div = helper.gE("myDiv");
                     const modus = helper.gE("modus");
+                    const todoId = event.target.dataset.todoid;
+                    const todoIndex = todoService.todoStorage.todos.find((todo) => todo.id === parseInt(todoId));
+                    const id = helper.qS("#id");
+                    const title = helper.qS("#title");
+                    const description = helper.qS("#description");
+                    const dueDate = helper.qS("#due_date");
+                    const importance = helper.qS("#importance");
+                    const completed = helper.qS("#completed");
 
                     modus.textContent = "Edit";
                     modal.style.display = "block";
@@ -123,16 +129,7 @@ export class TodoController {
                     } else {
                         div.style.backgroundColor = "#ffffff";
                     }
-                    
-                    const todoId = event.target.dataset.todoid;
-                    const todoIndex = todoService.todoStorage.todos.find((todo) => todo.id === parseInt(todoId));
-                    const id = helper.qS("#id");
-                    const title = helper.qS("#title");
-                    const description = helper.qS("#description");
-                    const dueDate = helper.qS("#due_date");
-                    const importance = helper.qS("#importance");
-                    const completed = helper.qS("#completed");
-                    
+
                     if(todoIndex.completed === true) { completed.checked = true; }
                     
                     id.value = todoIndex.id;
@@ -159,7 +156,6 @@ export class TodoController {
         this.loadTodos();
     }
     // ---------------------------------------------------
-    
     
     // Delete Todos
     // ===================================================

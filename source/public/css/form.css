@@ -46,10 +46,12 @@
     background-color: var(--theme-form-background);
     transition: background-color 0.15s ease;
     color: var(--theme-color);
+    font-family: Barlow, sans-serif;
 }
 
 .form-group input[type="date"] {
     font-family: Barlow, sans-serif;
+
 }
 
 .form-group textarea {
