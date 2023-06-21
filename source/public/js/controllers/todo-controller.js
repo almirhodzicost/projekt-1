@@ -33,6 +33,10 @@ export class TodoController {
             }
         });
         
+        const sortByImportance = helper.gE("sortByImportance");
+        sortByImportance.addEventListener("click", () => {
+            alert("sortByImportance");
+        });
         // Modal
         // ===================================================
         let modal = helper.gE("myModal");
@@ -84,6 +88,10 @@ export class TodoController {
     // ===================================================
     loadTodos() {
         this.todos = this.todoService.getAllTodos();
+        
+        // In services verschieben
+        
+        
         let todoHTML = "";
 
         if (this.todoTemplateCompiled) {
@@ -92,6 +100,8 @@ export class TodoController {
                 todoHTML += todoTemplate;
             });
         }
+        
+        
 
         if (this.todoList) {
             this.todoList.innerHTML = todoHTML;
