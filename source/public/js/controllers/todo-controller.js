@@ -87,11 +87,8 @@ export class TodoController {
     // Load Todos
     // ===================================================
     loadTodos() {
-        this.todos = this.todoService.getAllTodos();
-        
-        // In services verschieben
-        
-        
+        this.todos = this.todoService.getAllTodos('title', 'asc');
+
         let todoHTML = "";
 
         if (this.todoTemplateCompiled) {
@@ -100,8 +97,6 @@ export class TodoController {
                 todoHTML += todoTemplate;
             });
         }
-        
-        
 
         if (this.todoList) {
             this.todoList.innerHTML = todoHTML;

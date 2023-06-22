@@ -5,9 +5,38 @@ export class TodoService {
     constructor() {
         this.todoStorage = todoStorage;
     }
+    
+    getAllTodos(sortBy = 'title', sortOrder = 'asc') {
 
-    getAllTodos() {
+        return [...this.todoStorage.todos].sort((a, b) => {
+            if (sortBy === 'completed') {
+                if (a[sortBy] === b[sortBy]) {
+                    return 0;
+                }
+                // Wenn completed, sortiere true vor false, abhängig von der Sortierreihenfolge
+                return sortOrder === 'asc'
+                    ? a[sortBy] ? -1 : 1
+                    : a[sortBy] ? 1 : -1;
+            } else {
+                // Sortiere nach Titel oder einem anderen String-Feld, abhängig von der Sortierreihenfolge
+                if (a[sortBy] < b[sortBy]) {
+                    return sortOrder === 'asc' ? -1 : 1;
+                }
+                if (a[sortBy] > b[sortBy]) {
+                    return sortOrder === 'asc' ? 1 : -1;
+                }
+                return 0;
+            }
+        });
+    }
+    
+    
+    
+    
+    /*getAllTodos() {
+        
          return [...this.todoStorage.todos].sort((a, b) => {
+
             if (a.title < b.title) {
                 return -1;
             }
@@ -17,7 +46,7 @@ export class TodoService {
             return 0;
         });
         
-    }
+    }*/
 
     getTodoById(id) {
         return this.todoStorage.todos.find((todo) => todo.id === id);
