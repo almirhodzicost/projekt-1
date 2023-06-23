@@ -33,10 +33,15 @@ export class TodoController {
             }
         });
         
-        const sortByImportance = helper.gE("sortByImportance");
-        sortByImportance.addEventListener("click", () => {
-            alert("sortByImportance");
+        // Sorting Buttons
+        // ===================================================
+        const buttons = document.querySelectorAll("#SortingAction .btn");
+        buttons.forEach(function(button) {
+            button.addEventListener('click', function(e) {
+                alert(e.target.dataset.actionsort);
+            });
         });
+        
         // Modal
         // ===================================================
         let modal = helper.gE("myModal");

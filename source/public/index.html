@@ -27,10 +27,12 @@
     <div id="Sorting">
       <button id="myBtn" class="btn btn-primary" data-create="yes">Create TODO</button>
         Order by:
-      <button class="btn btn-primary" id="sortByName">Name</button>
-      <button class="btn btn-primary" id="sortByDueDate"">dueDate</button>
-      <button class="btn btn-primary" id="sortByImportance">Importance</button>
-      <button class="btn btn-primary" id="sortbyCompleted">Completed</button>
+      <span id="SortingAction">
+          <button class="btn btn-primary" id="sortByName" data-actionsort="title">Title</button>
+          <button class="btn btn-primary" id="sortByDueDate" data-actionsort="dueDate">dueDate</button>
+          <button class="btn btn-primary" id="sortByImportance" data-actionsort="importance">Importance</button>
+          <button class="btn btn-primary" id="sortbyCompleted" data-actionsort="completed">Completed</button>
+      </span>
     </div>
 </div>
 
