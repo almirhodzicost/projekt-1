@@ -6,8 +6,7 @@ export class TodoService {
         this.todoStorage = todoStorage;
     }
     
-    getAllTodos(sortBy = 'title', sortOrder = 'asc') {
-
+    getAllTodos(sortBy , sortOrder = 'asc') {
         return [...this.todoStorage.todos].sort((a, b) => {
             if (sortBy === 'completed') {
                 if (a[sortBy] === b[sortBy]) {

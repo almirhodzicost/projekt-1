@@ -38,7 +38,8 @@ export class TodoController {
         const buttons = document.querySelectorAll("#SortingAction .btn");
         buttons.forEach(function(button) {
             button.addEventListener('click', function(e) {
-                alert(e.target.dataset.actionsort);
+                const sortType = e.target.dataset.actionsort;
+                todoController.loadTodos(sortType,'asc');
             });
         });
         
@@ -90,8 +91,8 @@ export class TodoController {
     
     // Load Todos
     // ===================================================
-    loadTodos() {
-        this.todos = this.todoService.getAllTodos('title', 'asc');
+    loadTodos(a,b) {
+        this.todos = this.todoService.getAllTodos(a, b);
 
         let todoHTML = "";
 
