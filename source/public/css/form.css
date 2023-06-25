@@ -51,7 +51,6 @@
 
 .form-group input[type="date"] {
     font-family: Barlow, sans-serif;
-
 }
 
 .form-group textarea {
@@ -81,7 +80,7 @@
     padding: 5px 10px;
     border: none;
     border-radius: 5px;
-    cursor: default !important;
+    cursor: pointer;
 }
 
 .btn-xl {

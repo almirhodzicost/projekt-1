@@ -1,12 +1,11 @@
 import { todoStorage } from "../storage/todo-storage.js";
 
 export class TodoService {
-
     constructor() {
         this.todoStorage = todoStorage;
     }
     
-    getAllTodos(sortBy , sortOrder = 'asc') {
+    getAllTodos(sortBy , sortOrder) {
         return [...this.todoStorage.todos].sort((a, b) => {
             if (sortBy === 'completed') {
                 if (a[sortBy] === b[sortBy]) {
@@ -28,7 +27,6 @@ export class TodoService {
             }
         });
     }
-
 
     getTodoById(id) {
         return this.todoStorage.todos.find((todo) => todo.id === id);

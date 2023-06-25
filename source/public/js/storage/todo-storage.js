@@ -3,7 +3,15 @@ export class TodoStorage {
     constructor() {
 
         const storedTodos = localStorage.getItem("todos");
+        const storedSorting = localStorage.getItem("todos_sort");
+        const parsedSorting = JSON.parse(storedSorting);
  
+        if (storedSorting) {
+            this.saveSorting(parsedSorting.sortBy, parsedSorting.sortOrder);
+        } else {
+            this.saveSorting('createdAt', 'asc');
+        }
+        
         if (storedTodos) {
             this.todos = JSON.parse(storedTodos);
         } else {
@@ -42,6 +50,10 @@ export class TodoStorage {
 
     saveTodos() {
         localStorage.setItem("todos", JSON.stringify(this.todos));
+    }
+    
+    saveSorting(a,b) {
+        localStorage.setItem("todos_sort", JSON.stringify({sortBy: a, sortOrder: b}));
     }
 
     addTodo(todo) {

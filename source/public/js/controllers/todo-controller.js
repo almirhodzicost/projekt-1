@@ -1,5 +1,6 @@
 import { todoService } from "../services/todo-service.js";
 import { helper } from "./helper.js";
+import {todoStorage} from "../storage/todo-storage.js";
 
 export class TodoController {
     
@@ -18,6 +19,7 @@ export class TodoController {
     constructor() {
         const todoTemplateElement = helper.qS("#todo-list-template");
         if (todoTemplateElement) {
+            // eslint-disable-next-line no-undef
             this.todoTemplateCompiled = Handlebars.compile(todoTemplateElement.innerHTML);
         }
 
@@ -39,9 +41,21 @@ export class TodoController {
         buttons.forEach(function(button) {
             button.addEventListener('click', function(e) {
                 const sortType = e.target.dataset.actionsort;
-                todoController.loadTodos(sortType,'asc');
+                const storedSorting = localStorage.getItem("todos_sort");
+                const parseStoredSorting = JSON.parse(storedSorting);
+                const storedSortBy = parseStoredSorting.sortBy;
+                const storedSortOrder = parseStoredSorting.sortOrder;
+
+                if(storedSortBy===sortType && storedSortOrder==='asc'){
+                    const sortOrder = 'desc';
+                    todoStorage.saveSorting(sortType, sortOrder);
+                } else {
+                    todoStorage.saveSorting(sortType, 'asc');
+                }
+                todoController.loadTodos(this.storedSortBy,this.storedSortOrder);
             });
         });
+
         
         // Modal
         // ===================================================
@@ -92,7 +106,11 @@ export class TodoController {
     // Load Todos
     // ===================================================
     loadTodos(a,b) {
-        this.todos = this.todoService.getAllTodos(a, b);
+        a,b;
+        const storedSorting = localStorage.getItem("todos_sort");
+        const parseStoredSorting = JSON.parse(storedSorting);
+
+        this.todos = this.todoService.getAllTodos(parseStoredSorting.sortBy, parseStoredSorting.sortOrder);
 
         let todoHTML = "";
 
@@ -154,7 +172,6 @@ export class TodoController {
     }
     // ---------------------------------------------------
     
-    
     // Add Todos
     // ===================================================
     addTodo(todo) {
@@ -175,7 +192,6 @@ export class TodoController {
     }
     // ---------------------------------------------------
     
-    
     // Update Todos
     // ===================================================
     updateTodoById(id, updatedTodo) {
@@ -183,7 +199,6 @@ export class TodoController {
         this.loadTodos();
     }
     // ---------------------------------------------------
-    
     
     // Form handle
     // ===================================================
@@ -197,7 +212,7 @@ export class TodoController {
         const dueDate = document.querySelector("#due_date");
         const importance = document.querySelector("#importance");
         const completed = document.querySelector("#completed");
-        function CheckBoxCompleted(input) { return completed.checked;}
+        function CheckBoxCompleted() { return completed.checked;}
 
         const todo = {
             title: title.value,
