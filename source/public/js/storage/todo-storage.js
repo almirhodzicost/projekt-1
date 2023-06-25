@@ -42,6 +42,15 @@ export class TodoStorage {
                     importance: 1,
                     createdAt: "2021-06-04",
                     dueDate: "2021-06-10"
+                },
+                {
+                    id: 4,
+                    title: "Auto MFK",
+                    description: "MFK-Termin vereinbaren",
+                    completed: true,
+                    importance: 3,
+                    createdAt: "2021-06-17",
+                    dueDate: "2021-06-27"
                 }
             ];
             this.saveTodos();

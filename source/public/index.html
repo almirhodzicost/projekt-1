@@ -24,16 +24,22 @@
 <h3>ENTRIES</h3>
 
 <div id="tool-bar">
-    <div id="Sorting">
-      <button id="myBtn" class="btn btn-primary" data-create="yes">Create TODO</button>
-        Order by:
-      <span id="SortingAction">
-          <button class="btn btn-primary" id="sortByName" data-actionsort="title">Title</button>
-          <button class="btn btn-primary" id="sortByDueDate" data-actionsort="dueDate">dueDate</button>
-          <button class="btn btn-primary" id="sortByImportance" data-actionsort="importance">Importance</button>
-          <button class="btn btn-primary" id="sortCreatedAt" data-actionsort="createdAt">Created@</button>
-          <button class="btn btn-primary" id="sortbyCompleted" data-actionsort="completed">Completed</button>
-      </span>
+    <div id="Sorting" class="flex-container">
+
+        <div class="row between-xs">
+                <div class="col-xs-3">
+                    <button id="myBtn" class="btn btn-primary" data-create="yes">Create TODO</button>
+                </div>
+                <div class="col-xs-9 end-xs">
+                    <div id="SortingAction"><span class="helper-order-text">Order by</span>
+                        <button class="btn btn-primary" id="sortByName" data-actionsort="title">Title</button>
+                        <button class="btn btn-primary" id="sortByDueDate" data-actionsort="dueDate">dueDate</button>
+                        <button class="btn btn-primary" id="sortByImportance" data-actionsort="importance">Importance</button>
+                        <button class="btn btn-primary" id="sortCreatedAt" data-actionsort="createdAt">Created@</button>
+                        <button class="btn btn-primary" id="sortbyCompleted" data-actionsort="completed">Completed</button>
+                    </div>
+                </div>
+        </div>
     </div>
 </div>
 
@@ -57,8 +63,8 @@
             <span class="title">{{title}}</span><br>
             <span class="description">{{description}}</span>
         </div>
-        <div class="postactions">
-            <span class="importance">Import. {{importance}}</span><br>
+        <div class="postactions end-sm end-xs">
+            <span class="importance"><ion-icon name="star-outline"></ion-icon> {{importance}}</span><br>
             <span><a href="javascript:void(0)" data-postaction="edit" data-todoid="{{id}}" class="linkbutton edit edit_button">edit</a></span>
             <span><a href="javascript:void(0)" data-todotitle="{{title}}" data-postaction="delete" data-todoid="{{id}}" class="linkbutton delete">delete</a></span>
         </div>
