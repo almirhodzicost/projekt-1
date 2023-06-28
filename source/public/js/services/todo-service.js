@@ -5,6 +5,10 @@ export class TodoService {
         this.todoStorage = todoStorage;
     }
     
+    sortingTodos(sortBy, sortOrder) {
+        this.todoStorage.saveSorting(sortBy, sortOrder);
+    }
+    
     getAllTodos(sortBy , sortOrder) {
         return [...this.todoStorage.todos].sort((a, b) => {
             if (sortBy === 'completed') {
