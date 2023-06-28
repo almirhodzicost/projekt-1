@@ -41,6 +41,7 @@ export class TodoController {
         buttons.forEach(function(button) {
             button.addEventListener('click', function(e) {
                 const sortType = e.target.dataset.actionsort;
+                
                 const storedSorting = localStorage.getItem("todos_sort");
                 const parseStoredSorting = JSON.parse(storedSorting);
                 const storedSortBy = parseStoredSorting.sortBy;
@@ -48,9 +49,11 @@ export class TodoController {
 
                 if(storedSortBy===sortType && storedSortOrder==='asc'){
                     const sortOrder = 'desc';
-                    todoStorage.saveSorting(sortType, sortOrder);
+                    todoService.sortingTodos(sortType, sortOrder);
+                    //todoStorage.saveSorting(sortType, sortOrder);
                 } else {
-                    todoStorage.saveSorting(sortType, 'asc');
+                    todoService.sortingTodos(sortType, 'asc');
+                    //todoStorage.saveSorting(sortType, 'asc');
                 }
                 todoController.loadTodos(this.storedSortBy,this.storedSortOrder);
             });
