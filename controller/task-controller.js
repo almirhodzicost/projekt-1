@@ -16,7 +16,7 @@ export class TaskController {
             req.body.description,
             req.body.importance,
             req.body.dueDate,
-            req.body.state,
+            req.body.completed,
         ));
     };
     
@@ -31,7 +31,7 @@ export class TaskController {
             req.body.description,
             req.body.importance,
             req.body.dueDate,
-            req.body.state,
+            req.body.completed,
         ));
     };
     

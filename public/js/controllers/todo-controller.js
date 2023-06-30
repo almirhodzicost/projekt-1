@@ -1,6 +1,6 @@
 import { todoService } from "../services/todo-service.js";
 import { helper } from "./helper.js";
-import {todoStorage} from "../storage/todo-storage.js";
+import { taskService } from '../services/task-service.js';
 
 export class TodoController {
     
@@ -50,10 +50,8 @@ export class TodoController {
                 if(storedSortBy===sortType && storedSortOrder==='asc'){
                     const sortOrder = 'desc';
                     todoService.sortingTodos(sortType, sortOrder);
-                    //todoStorage.saveSorting(sortType, sortOrder);
                 } else {
                     todoService.sortingTodos(sortType, 'asc');
-                    //todoStorage.saveSorting(sortType, 'asc');
                 }
                 todoController.loadTodos(this.storedSortBy,this.storedSortOrder);
             });
@@ -101,10 +99,9 @@ export class TodoController {
         let day = date.getDate();
         let month = date.getMonth() + 1;
         let year = date.getFullYear();
-        return `${day}.${month}.${year}`;
+        return `${year}-${month}-${day}`;
     }
     // ---------------------------------------------------
-
     
     // Load Todos
     // ===================================================
@@ -144,7 +141,7 @@ export class TodoController {
                     const div = helper.gE("myDiv");
                     const modus = helper.gE("modus");
                     const todoId = event.target.dataset.todoid;
-                    const todoIndex = todoService.todoStorage.todos.find((todo) => todo.id === parseInt(todoId));
+                    const todoIndex = this.todos.find((todo) => todo.id === parseInt(todoId));
                     const id = helper.qS("#id");
                     const title = helper.qS("#title");
                     const description = helper.qS("#description");
@@ -221,17 +218,16 @@ export class TodoController {
             title: title.value,
             description: description.value,
             dueDate: dueDate.value,
-            importance: importance.value,
+            importance: Number(importance.value),
             completed: CheckBoxCompleted(completed.value),
-            createdAt: new Date(),
-            creationDate: new Date(),
+            createdAt: this.currentDate('dd.MM.yyyy'),
         };
 
         if(todoId.value !== "")
         {
             // Update todo
             // ===================================================
-            const todoUpdate = todoService.todoStorage.todos.find((todo) => todo.id === parseInt(todoId.value));
+            const todoUpdate = this.todos.find((todo) => todo.id === parseInt(todoId.value));
             todoUpdate.title = title.value;
             todoUpdate.description = description.value;
             todoUpdate.dueDate = dueDate.value;

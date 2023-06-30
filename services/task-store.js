@@ -13,15 +13,15 @@ export class TaskManager {
 
 export class TaskStore {
     constructor(db) {
-        const options = process.env.DB_TYPE === "FILE" ? {filename: './data/orders.db', autoload: true} : {}
+        const options = process.env.DB_TYPE === "FILE" ? {filename: './data/task.db', autoload: true} : {}
         this.db = db || new Datastore(options);
     }
     
-    async add(title, description, importance, dueDate, completed) {
+    async add(title, description, importance, dueDate, createdAt, completed) {
         console.log(this.dueDate)
         console.log(dueDate)
         
-        let task = new TaskManager(title, description, importance, dueDate, completed);
+        let task = new TaskManager(title, description, importance, dueDate, createdAt, completed);
         return this.db.insert(task);
     }
     
@@ -35,7 +35,7 @@ export class TaskStore {
     };
     
     async update(id, title, description, importance, dueDate, completed) {
-        console.log(state)
+        
         await this.db.update({ _id: id }, {
             $set: {
                 "title": title,
@@ -50,13 +50,11 @@ export class TaskStore {
     
     async all(query, sortBy, sortOrder, filterCompleted) {
         let dbQuery = {
-            $and: [{ completed: { $ne: "DELETED" } }],
+            $and: [{ completed: { $ne: "false" } }],
         };
-        
         if (filterCompleted) {
-            dbQuery.$and.push({ $or: [{ completed: false }] });
+            dbQuery.$and.push({ $or: [{ completed: "true" }] });
         }
-        
         if (sortBy === "sortByDate") {
             return this.db.find(dbQuery).sort({ dueDate: sortOrder }).exec();
         }
