@@ -1,6 +1,6 @@
+import { taskService } from '../services/task-service.js';
 import { todoService } from "../services/todo-service.js";
 import { helper } from "./helper.js";
-import { taskService } from '../services/task-service.js';
 
 export class TodoController {
     
@@ -13,7 +13,6 @@ export class TodoController {
     }
     // ---------------------------------------------------
     
-    
     // Constructor
     // ===================================================
     constructor() {
@@ -24,6 +23,7 @@ export class TodoController {
         }
 
         this.todoService = todoService;
+        this.taskService = taskService;
         this.todoList = document.querySelector("#todoList");
 
         window.addEventListener("load", () => {
@@ -56,7 +56,6 @@ export class TodoController {
                 todoController.loadTodos(this.storedSortBy,this.storedSortOrder);
             });
         });
-
         
         // Modal
         // ===================================================
@@ -102,17 +101,15 @@ export class TodoController {
         return `${year}-${month}-${day}`;
     }
     // ---------------------------------------------------
-    
     // Load Todos
     // ===================================================
- 
     loadTodos(a,b) {
         a,b;
         const storedSorting = localStorage.getItem("todos_sort");
         const parseStoredSorting = JSON.parse(storedSorting);
         
-        //this.todos = this.todoService.getAllTodos(parseStoredSorting.sortBy, parseStoredSorting.sortOrder);
-        this.todos = this.taskService.getAllTask("title", "desc");
+        this.todos = this.todoService.getAllTodos(parseStoredSorting.sortBy, parseStoredSorting.sortOrder);
+        //this.todos = taskService.getAllTask("title", "desc", true);
 
         let todoHTML = "";
 
