@@ -1,0 +1,4 @@
+{"title":"Spazieren (S)","description":"Mit FiFi im Wald spazieren","importance":1,"dueDate":{"$$date":1691107200000},"createdAt":{"$$date":1688242822119},"completed":false,"_id":"JZT3wKzQukBwK6By"}
+{"title":"Fitness (S)","description":"Fitness-Training im Studio","importance":1,"dueDate":{"$$date":1691193600000},"createdAt":{"$$date":1688242807734},"completed":false,"_id":"L5XaYmuLCDLZ1DcQ"}
+{"title":"Auto MFK (S)","description":"MFK-Termin vereinbaren","importance":5,"dueDate":{"$$date":1693353600000},"createdAt":{"$$date":1688242842074},"completed":false,"_id":"W44Gwxulq0AvFjTn"}
+{"title":"Einkaufen  (S)","description":"Orangensaft, Salat Müsliriegel","importance":1,"dueDate":{"$$date":1691020800000},"createdAt":{"$$date":1688242785247},"completed":false,"_id":"biu5DuTkbHREQBzW"}

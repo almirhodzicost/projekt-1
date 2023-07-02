@@ -105,12 +105,14 @@ export class TodoController {
     
     // Load Todos
     // ===================================================
+ 
     loadTodos(a,b) {
         a,b;
         const storedSorting = localStorage.getItem("todos_sort");
         const parseStoredSorting = JSON.parse(storedSorting);
-
-        this.todos = this.todoService.getAllTodos(parseStoredSorting.sortBy, parseStoredSorting.sortOrder);
+        
+        //this.todos = this.todoService.getAllTodos(parseStoredSorting.sortBy, parseStoredSorting.sortOrder);
+        this.todos = this.taskService.getAllTask("title", "desc");
 
         let todoHTML = "";
 
@@ -175,11 +177,7 @@ export class TodoController {
     // Add Todos
     // ===================================================
     addTodo(todo) {
-        const randomId = this.UniqueId();
-        this.todoService.createTodo({
-            id: randomId,
-            ...todo,
-        });
+        taskService.addTask(todo);
         this.loadTodos();
     }
     // ---------------------------------------------------
@@ -219,8 +217,8 @@ export class TodoController {
             description: description.value,
             dueDate: dueDate.value,
             importance: Number(importance.value),
-            completed: CheckBoxCompleted(completed.value),
             createdAt: this.currentDate('dd.MM.yyyy'),
+            completed: CheckBoxCompleted(completed.value)
         };
 
         if(todoId.value !== "")

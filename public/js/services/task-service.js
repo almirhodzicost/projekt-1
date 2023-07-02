@@ -25,7 +25,7 @@ class TaskService {
     
     async updateTask(_id, task) {
         console.log(task)
-        return httpService.ajax("POST", `/task/${_id}`, {
+        return httpService.ajax("PATCH", `/task/${_id}`, {
             title: task.title,
             description: task.description,
             importance: task.importance,

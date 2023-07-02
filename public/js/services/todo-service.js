@@ -1,4 +1,5 @@
 import { todoStorage } from "../storage/todo-storage.js";
+import { httpService } from "./http-service.js";
 
 export class TodoService {
     constructor() {
@@ -38,6 +39,16 @@ export class TodoService {
 
     createTodo(todo) {
         this.todoStorage.addTodo(todo);
+    }
+    
+    async addTask(task) {
+        return httpService.ajax("POST", "/task/", {
+            title: task.title,
+            description: task.description,
+            importance: task.importance,
+            dueDate: task.dueDate,
+            completed: task.completed
+        });
     }
 
     deleteTodoById(id) {

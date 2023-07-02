@@ -1,12 +1,11 @@
 import { taskStore } from '../services/task-store.js'
 
-
 export class TaskController {
     
     getAllTasks = async (req, res) => {
-        const sortBy = req.query.sortBy || 'dueDate';
+        const sortBy = req.query.sortBy || 'createdAt';
         const sortOrder = req.query.sortOrder === 'desc' ? -1 : 1;
-        const filterCompleted = req.query.filterCompleted === 'true';
+        const filterCompleted = req.query.filterCompleted === true;
         res.json(await taskStore.all(req.query.query, sortBy, sortOrder, filterCompleted));
     };
     
@@ -16,6 +15,7 @@ export class TaskController {
             req.body.description,
             req.body.importance,
             req.body.dueDate,
+            req.body.createdAt,
             req.body.completed,
         ));
     };

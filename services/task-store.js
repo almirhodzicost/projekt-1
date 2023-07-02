@@ -7,7 +7,7 @@ export class TaskManager {
         this.importance = importance;
         this.dueDate = new Date(dueDate);
         this.createdAt = new Date();
-        this.completed = "false";
+        this.completed = completed;
     }
 }
 
@@ -18,15 +18,12 @@ export class TaskStore {
     }
     
     async add(title, description, importance, dueDate, createdAt, completed) {
-        console.log(this.dueDate)
-        console.log(dueDate)
-        
         let task = new TaskManager(title, description, importance, dueDate, createdAt, completed);
         return this.db.insert(task);
     }
     
     async delete(id) {
-        await this.db.update({ _id: id }, { $set: { completed: "false" } });
+        await this.db.update({ _id: id }, { $set: { completed: false } });
         return this.get(id);
     }
     
@@ -35,7 +32,6 @@ export class TaskStore {
     };
     
     async update(id, title, description, importance, dueDate, completed) {
-        
         await this.db.update({ _id: id }, {
             $set: {
                 "title": title,
@@ -50,19 +46,22 @@ export class TaskStore {
     
     async all(query, sortBy, sortOrder, filterCompleted) {
         let dbQuery = {
-            $and: [{ completed: { $ne: "false" } }],
+            $and: [{ completed: { $ne: false } }],
         };
         if (filterCompleted) {
-            dbQuery.$and.push({ $or: [{ completed: "true" }] });
+            dbQuery.$and.push({ $or: [{ completed: true }] });
         }
-        if (sortBy === "sortByDate") {
-            return this.db.find(dbQuery).sort({ dueDate: sortOrder }).exec();
+        if (sortBy === "createdAt") {
+            return this.db.find(dbQuery).sort({ createdAt: sortOrder }).exec();
         }
-        else if (sortBy === "sortByTask") {
+        if (sortBy === "title") {
             return this.db.find(dbQuery).sort({ title: sortOrder }).exec();
         }
-        else if (sortBy === "sortByimportance") {
+        else if (sortBy === "importance") {
             return this.db.find(dbQuery).sort({ importance: sortOrder }).exec();
+        }
+        else if (sortBy === "completed") {
+            return this.db.find(dbQuery).sort({ completed: sortOrder }).exec();
         }
         else {
             return this.db.find(dbQuery).sort({ dueDate: sortOrder }).exec();
