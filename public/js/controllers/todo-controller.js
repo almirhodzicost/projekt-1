@@ -103,23 +103,23 @@ export class TodoController {
     // ---------------------------------------------------
     // Load Todos
     // ===================================================
-    loadTodos(a,b) {
-        a,b;
+    async loadTodos(a, b) {
+        a, b;
         const storedSorting = localStorage.getItem("todos_sort");
         const parseStoredSorting = JSON.parse(storedSorting);
         
-        this.todos = this.todoService.getAllTodos(parseStoredSorting.sortBy, parseStoredSorting.sortOrder);
-        //this.todos = taskService.getAllTask("title", "desc", true);
-
+        //this.todos = this.todoService.getAllTodos(parseStoredSorting.sortBy, parseStoredSorting.sortOrder);
+        this.todos = await taskService.getAllTask("title", "desc", true);
+        
         let todoHTML = "";
-
+        
         if (this.todoTemplateCompiled) {
             this.todos.forEach((todo) => {
                 const todoTemplate = this.todoTemplateCompiled(todo);
                 todoHTML += todoTemplate;
             });
         }
-
+        
         if (this.todoList) {
             this.todoList.innerHTML = todoHTML;
             const deleteButtons = this.todoList.querySelectorAll("[data-postaction='delete']");
@@ -140,14 +140,14 @@ export class TodoController {
                     const div = helper.gE("myDiv");
                     const modus = helper.gE("modus");
                     const todoId = event.target.dataset.todoid;
-                    const todoIndex = this.todos.find((todo) => todo.id === parseInt(todoId));
+                    const todoIndex = this.todos.find((todo) => todo.id === todoId);
                     const id = helper.qS("#id");
                     const title = helper.qS("#title");
                     const description = helper.qS("#description");
                     const dueDate = helper.qS("#due_date");
                     const importance = helper.qS("#importance");
                     const completed = helper.qS("#completed");
-
+                    
                     modus.textContent = "Edit";
                     modal.style.display = "block";
                     
@@ -156,8 +156,10 @@ export class TodoController {
                     } else {
                         div.style.backgroundColor = "#ffffff";
                     }
-
-                    if(todoIndex.completed === true) { completed.checked = true; }
+                    
+                    if (todoIndex.completed === true) {
+                        completed.checked = true;
+                    }
                     
                     id.value = todoIndex.id;
                     title.value = todoIndex.title;
@@ -182,7 +184,8 @@ export class TodoController {
     // Delete Todos
     // ===================================================
     deleteTodoById(id) {
-        this.todoService.deleteTodoById(id);
+        //this.todoService.deleteTodoById(id);
+        this.taskService.deleteTask(id);
         this.loadTodos();
     }
     // ---------------------------------------------------

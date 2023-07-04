@@ -13,6 +13,7 @@ import dotenv from "dotenv";
 
 // load config-file
 dotenv.config({ path: `.env${process.env.NODE_ENV ? `-${process.env.NODE_ENV}` : ''}` });
+//const options = process.env.DB_TYPE === "FILE" ? {filename: './data/task.db', autoload: true} : {}
 
 const app = (await import('./app.js')).app;
 

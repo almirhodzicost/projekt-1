@@ -46,7 +46,7 @@ export class TaskStore {
     
     async all(query, sortBy, sortOrder, filterCompleted) {
         let dbQuery = {
-            $and: [{ completed: { $ne: false } }],
+            completed: filterCompleted
         };
         if (filterCompleted) {
             dbQuery.$and.push({ $or: [{ completed: true }] });
