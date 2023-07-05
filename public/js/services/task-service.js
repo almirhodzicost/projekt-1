@@ -1,16 +1,13 @@
 import { httpService } from './http-service.js'
 
 class TaskService {
-    async getAllTask(sortBy, sortOrder, filterCompleted) {
+    async getAllTask(sortBy, sortOrder) {
         let url = `/task/?sortBy=${sortBy}&sortOrder=${sortOrder}`;
-        if (filterCompleted) {
-            url += `&filterCompleted=true`;
-        }
         return httpService.ajax("GET", url);
     }
     
     async deleteTask(id) {
-        return httpService.ajax("DELETE", `/task/${id}`, undefined);
+        return httpService.ajax("DELETE", `/task/${id}`);
     }
     
     async addTask(task) {

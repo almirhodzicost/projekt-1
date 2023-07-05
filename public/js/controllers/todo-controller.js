@@ -191,17 +191,17 @@ export class TodoController {
     
     // Add Todos
     // ===================================================
-    addTodo(todo) {
-        taskService.addTask(todo);
-        this.loadTodos();
+    async addTodo(todo) {
+        await this.taskService.addTask(todo);
+        await this.loadTodos();
     }
     // ---------------------------------------------------
     
     // Delete Todos
     // ===================================================
    async deleteTodoById(id) {
-        await this.taskService.deleteTask(id);
-        await this.loadTodos();
+        this.taskService.deleteTask(id);
+        this.loadTodos();
     }
     // ---------------------------------------------------
     
@@ -209,7 +209,6 @@ export class TodoController {
     // ===================================================
     async updateTodoById(id, updatedTodo) {
         await this.taskService.updateTask(id, updatedTodo);
-        //await this.updateTodoById(id, updatedTodo);
         await this.loadTodos();
     }
     // ---------------------------------------------------

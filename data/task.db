@@ -1,9 +1,7 @@
-{"title":"xc","description":"cx","importance":1,"dueDate":{"$$date":1688515200000},"createdAt":{"$$date":1688584580968},"completed":false,"_id":"482vWTIz2dDJ5Ydd"}
-{"title":"fs","description":"fsd","importance":1,"dueDate":{"$$date":1690588800000},"createdAt":{"$$date":1688584556960},"completed":true,"_id":"HEqIU74yHWoRZooE"}
-{"title":"fasccvcvvv4","description":"vdfvsdfv","importance":1,"dueDate":{"$$date":1690070400000},"createdAt":{"$$date":1688567079508},"completed":true,"_id":"KkSd0mGq0JeerOSD"}
-{"title":"j","description":"j","importance":1,"dueDate":{"$$date":1690416000000},"createdAt":{"$$date":1688581533541},"completed":false,"_id":"aPamEsi4qPpMPFDO"}
-{"title":"g","description":"g","importance":1,"dueDate":{"$$date":1690070400000},"createdAt":{"$$date":1688581527366},"completed":false,"_id":"nnL9FMfgwe6RMPw8"}
-{"title":"ä","description":"$","importance":1,"dueDate":{"$$date":1690416000000},"createdAt":{"$$date":1688581539579},"completed":false,"_id":"pA9taBD4d6VeV5kH"}
-{"title":"j4","description":"j","importance":"1","dueDate":"2023-07-27","createdAt":{"$$date":1688581533541},"completed":false,"_id":"aPamEsi4qPpMPFDO"}
-{"title":"g","description":"Oh Maria","importance":"1","dueDate":"2023-07-23","createdAt":{"$$date":1688581527366},"completed":true,"_id":"nnL9FMfgwe6RMPw8"}
-{"title":"g","description":"Oh Maria","importance":"1","dueDate":"2023-07-23","createdAt":{"$$date":1688581527366},"completed":false,"_id":"nnL9FMfgwe6RMPw8"}
+{"title":"g4","description":"Oh Maria","importance":"1","dueDate":"2023-07-23","createdAt":{"$$date":1688581527366},"completed":false,"_id":"nnL9FMfgwe6RMPw8"}
+{"$$deleted":true,"_id":"nnL9FMfgwe6RMPw8"}
+{"title":"fsdf","description":"fsdf","importance":1,"dueDate":{"$$date":1690588800000},"createdAt":{"$$date":1688590419995},"completed":false,"_id":"LlI07TnHQhDBcE1w"}
+{"title":"fsdf","description":"fsdf","importance":"1","dueDate":"2023-07-29","createdAt":{"$$date":1688590419995},"completed":true,"_id":"LlI07TnHQhDBcE1w"}
+{"title":"fsdf","description":"fsdf","importance":"1","dueDate":"2023-07-29","createdAt":{"$$date":1688590419995},"completed":false,"_id":"LlI07TnHQhDBcE1w"}
+{"title":"fsdf","description":"fsdf","importance":"1","dueDate":"2023-07-29","createdAt":{"$$date":1688590419995},"completed":true,"_id":"LlI07TnHQhDBcE1w"}
+{"title":"fsdf34","description":"fsdf","importance":"1","dueDate":"2023-07-29","createdAt":{"$$date":1688590419995},"completed":true,"_id":"LlI07TnHQhDBcE1w"}
