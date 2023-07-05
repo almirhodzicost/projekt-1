@@ -23,8 +23,8 @@ export class TaskStore {
     }
     
     async delete(id) {
-        await this.db.update({ _id: id }, { $set: { completed: false } });
-        return this.get(id);
+        await this.db.remove({ _id: id } );
+        //return this.get(id);
     }
     
     async get(id) {
@@ -44,13 +44,14 @@ export class TaskStore {
         return this.get(id);
     }
     
-    async all(query, sortBy, sortOrder, filterCompleted) {
-        let dbQuery = {
+    async all(query, sortBy, sortOrder) {
+        let dbQuery;
+        /*let dbQuery = {
             completed: filterCompleted
         };
         if (filterCompleted) {
             dbQuery.$and.push({ $or: [{ completed: true }] });
-        }
+        }*/
         if (sortBy === "createdAt") {
             return this.db.find(dbQuery).sort({ createdAt: sortOrder }).exec();
         }

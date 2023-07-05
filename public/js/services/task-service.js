@@ -9,6 +9,10 @@ class TaskService {
         return httpService.ajax("GET", url);
     }
     
+    async deleteTask(id) {
+        return httpService.ajax("DELETE", `/task/${id}`, undefined);
+    }
+    
     async addTask(task) {
         return httpService.ajax("POST", "/task/", {
             title: task.title,
@@ -34,9 +38,7 @@ class TaskService {
         });
     }
     
-    async deleteTask(id) {
-        return httpService.ajax("DELETE", `/task/${id}`, undefined);
-    }
+    
 }
 
 export const taskService = new TaskService();

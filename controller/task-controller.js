@@ -5,8 +5,8 @@ export class TaskController {
     getAllTasks = async (req, res) => {
         const sortBy = req.query.sortBy || 'createdAt';
         const sortOrder = req.query.sortOrder === 'desc' ? -1 : 1;
-        const filterCompleted = req.query.filterCompleted === true;
-        res.json(await taskStore.all(req.query.query, sortBy, sortOrder, filterCompleted));
+        const filterCompleted = req.query.filterCompleted === false;
+        res.json(await taskStore.all(req.query.query, sortBy, sortOrder));
     };
     
     addTask = async (req, res) => {

@@ -98,6 +98,24 @@ export class TodoController {
         let day = date.getDate();
         let month = date.getMonth() + 1;
         let year = date.getFullYear();
+        
+        if (month < 10) {
+            month = '0' + month;
+        }
+        
+        return `${year}-${month}-${day}`;
+    }
+    
+    formatDate(value) {
+        const date = new Date(value);
+        let day = date.getDate();
+        let month = date.getMonth() + 1;
+        let year = date.getFullYear();
+        
+        if (month < 10) {
+            month = '0' + month;
+        }
+        
         return `${year}-${month}-${day}`;
     }
     // ---------------------------------------------------
@@ -107,10 +125,7 @@ export class TodoController {
         a, b;
         const storedSorting = localStorage.getItem("todos_sort");
         const parseStoredSorting = JSON.parse(storedSorting);
-        
-        //this.todos = this.todoService.getAllTodos(parseStoredSorting.sortBy, parseStoredSorting.sortOrder);
-        this.todos = await taskService.getAllTask("title", "desc", true);
-        
+        this.todos = await taskService.getAllTask(parseStoredSorting.sortBy, parseStoredSorting.sortOrder);
         let todoHTML = "";
         
         if (this.todoTemplateCompiled) {
@@ -124,6 +139,7 @@ export class TodoController {
             this.todoList.innerHTML = todoHTML;
             const deleteButtons = this.todoList.querySelectorAll("[data-postaction='delete']");
             const editButtons = this.todoList.querySelectorAll("[data-postaction='edit']");
+            
             deleteButtons.forEach((deleteButton) => {
                 deleteButton.addEventListener("click", (event) => {
                     const todoId = event.target.dataset.todoid;
@@ -140,7 +156,7 @@ export class TodoController {
                     const div = helper.gE("myDiv");
                     const modus = helper.gE("modus");
                     const todoId = event.target.dataset.todoid;
-                    const todoIndex = this.todos.find((todo) => todo.id === todoId);
+                    const todoIndex = this.todos.find((todo) => todo._id === todoId);
                     const id = helper.qS("#id");
                     const title = helper.qS("#title");
                     const description = helper.qS("#description");
@@ -161,10 +177,10 @@ export class TodoController {
                         completed.checked = true;
                     }
                     
-                    id.value = todoIndex.id;
+                    id.value = todoIndex._id;
                     title.value = todoIndex.title;
                     description.value = todoIndex.description;
-                    dueDate.value = todoIndex.dueDate;
+                    dueDate.value = this.formatDate(todoIndex.dueDate);
                     importance.value = todoIndex.importance;
                     completed.value = todoIndex.completed;
                 });
@@ -183,24 +199,24 @@ export class TodoController {
     
     // Delete Todos
     // ===================================================
-    deleteTodoById(id) {
-        //this.todoService.deleteTodoById(id);
-        this.taskService.deleteTask(id);
-        this.loadTodos();
+   async deleteTodoById(id) {
+        await this.taskService.deleteTask(id);
+        await this.loadTodos();
     }
     // ---------------------------------------------------
     
     // Update Todos
     // ===================================================
-    updateTodoById(id, updatedTodo) {
-        todoService.updateTodoById(id, updatedTodo);
-        this.loadTodos();
+    async updateTodoById(id, updatedTodo) {
+        await this.taskService.updateTask(id, updatedTodo);
+        //await this.updateTodoById(id, updatedTodo);
+        await this.loadTodos();
     }
     // ---------------------------------------------------
     
     // Form handle
     // ===================================================
-    handleformTodoSubmit(event) {
+    async handleformTodoSubmit(event) {
         event.preventDefault();
         // Data from the form.
         // ===================================================
@@ -225,19 +241,21 @@ export class TodoController {
         {
             // Update todo
             // ===================================================
-            const todoUpdate = this.todos.find((todo) => todo.id === parseInt(todoId.value));
+            const todoUpdate = this.todos.find((todo) => todo._id === todoId.value);
             todoUpdate.title = title.value;
             todoUpdate.description = description.value;
             todoUpdate.dueDate = dueDate.value;
             todoUpdate.importance = importance.value;
             todoUpdate.completed = helper.cBChecked(completed);
-            this.updateTodoById(todoUpdate.id, todoUpdate);
+            
+            await this.taskService.updateTask(todoUpdate._id, todoUpdate);
+
             todoId.value = "";
             // ---------------------------------------------------
         } else {
             // Add todo
             // ===================================================
-            this.addTodo(todo);
+            await this.addTodo(todo);
             // ---------------------------------------------------
         }
 
