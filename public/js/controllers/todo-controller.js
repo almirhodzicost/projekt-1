@@ -208,8 +208,9 @@ export class TodoController {
     // Update Todos
     // ===================================================
     async updateTodoById(id, updatedTodo) {
+        /*alert(updatedTodo);
         await this.taskService.updateTask(id, updatedTodo);
-        await this.loadTodos();
+        await this.loadTodos();*/
     }
     // ---------------------------------------------------
     
@@ -248,8 +249,8 @@ export class TodoController {
             todoUpdate.completed = helper.cBChecked(completed);
             
             await this.taskService.updateTask(todoUpdate._id, todoUpdate);
-
-            todoId.value = "";
+            
+            await this.formTodo.reset();
             // ---------------------------------------------------
         } else {
             // Add todo
@@ -257,7 +258,7 @@ export class TodoController {
             await this.addTodo(todo);
             // ---------------------------------------------------
         }
-
+        await this.loadTodos();
         // Reset the form.
         // ===================================================
         this.formTodo.reset();
