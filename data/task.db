@@ -16,3 +16,9 @@
 {"title":"Fitness","description":"Anesa anrufen","importance":1,"dueDate":"2023-08-06","createdAt":{"$$date":1688694622021},"completed":false,"_id":"XFHsmT7EdcrOe8bd"}
 {"title":"Fitness","description":"Anesa anrufen","importance":"5","dueDate":"2023-08-06","createdAt":{"$$date":1688694622021},"completed":false,"_id":"XFHsmT7EdcrOe8bd"}
 {"title":"Fitness","description":"Anesa anrufen","importance":"5","dueDate":"2023-08-06","createdAt":{"$$date":1688694622021},"completed":true,"_id":"XFHsmT7EdcrOe8bd"}
+{"title":"Badi","description":"Schwimmen","importance":1,"dueDate":"2023-08-03","createdAt":{"$$date":1688694795557},"completed":true,"_id":"ouWEjS3LK4epYSMj"}
+{"title":"Flughafen","description":"Tickets","importance":5,"dueDate":"2023-07-29","createdAt":{"$$date":1688694824520},"completed":false,"_id":"VWRfQeXlRjss4xyz"}
+{"title":"Badi","description":"Schwimmen","importance":"3","dueDate":"2023-08-03","createdAt":{"$$date":1688694795557},"completed":true,"_id":"ouWEjS3LK4epYSMj"}
+{"title":"Regardless","description":"Mobility over Facility","importance":"2","dueDate":"2023-07-21","createdAt":{"$$date":1688694604350},"completed":false,"_id":"kYVU9CLbczEI6Q70"}
+{"title":"Regardless","description":"Mobility over Facility","importance":"2","dueDate":"2023-07-21","createdAt":{"$$date":1688694604350},"completed":true,"_id":"kYVU9CLbczEI6Q70"}
+{"$$deleted":true,"_id":"kYVU9CLbczEI6Q70"}
