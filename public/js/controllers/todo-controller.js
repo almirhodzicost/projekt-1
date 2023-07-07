@@ -99,25 +99,24 @@ export class TodoController {
         let month = date.getMonth() + 1;
         let year = date.getFullYear();
         
-        if (month < 10) {
-            month = '0' + month;
-        }
+        if (day < 10) { day = '0' + day; }
+        if (month < 10) { month = '0' + month; }
         
         return `${year}-${month}-${day}`;
     }
     
     formatDate(value) {
         const date = new Date(value);
-        let day = date.getDate();
-        let month = date.getMonth() + 1;
-        let year = date.getFullYear();
+        let days = date.getDate();
+        let months = date.getMonth() + 1;
+        let years = date.getFullYear();
         
-        if (month < 10) {
-            month = '0' + month;
-        }
+        if (days < 10) { days = '0' + days; }
+        if (months < 10) { months = '0' + months; }
         
-        return `${year}-${month}-${day}`;
+        return `${years}-${months}-${days}`;
     }
+
     // ---------------------------------------------------
     // Load Todos
     // ===================================================
@@ -176,7 +175,7 @@ export class TodoController {
                     if (todoIndex.completed === true) {
                         completed.checked = true;
                     }
-                    
+
                     id.value = todoIndex._id;
                     title.value = todoIndex.title;
                     description.value = todoIndex.description;
@@ -233,7 +232,7 @@ export class TodoController {
             description: description.value,
             dueDate: dueDate.value,
             importance: Number(importance.value),
-            createdAt: this.currentDate('dd.MM.yyyy'),
+            createdAt: this.currentDate(),
             completed: CheckBoxCompleted(completed.value)
         };
 
@@ -244,7 +243,7 @@ export class TodoController {
             const todoUpdate = this.todos.find((todo) => todo._id === todoId.value);
             todoUpdate.title = title.value;
             todoUpdate.description = description.value;
-            todoUpdate.dueDate = dueDate.value;
+            todoUpdate.dueDate = this.formatDate(dueDate.value);
             todoUpdate.importance = importance.value;
             todoUpdate.completed = helper.cBChecked(completed);
             

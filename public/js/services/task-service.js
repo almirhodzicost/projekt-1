@@ -1,20 +1,5 @@
 import { httpService } from './http-service.js'
-import { helper} from "../controllers/helper.js";
-
 class TaskService {
-    
-    formatDate(value) {
-        const date = new Date(value);
-        let day = date.getDate();
-        let month = date.getMonth() + 1;
-        let year = date.getFullYear();
-        
-        if (month < 10) {
-            month = '0' + month;
-        }
-        
-        return `${year}-${month}-${day}`;
-    }
     
     async getAllTask(sortBy, sortOrder) {
         let url = `/task/?sortBy=${sortBy}&sortOrder=${sortOrder}`;
@@ -48,8 +33,6 @@ class TaskService {
             completed: task.completed,
         });
     }
-    
-    
 }
 
 export const taskService = new TaskService();

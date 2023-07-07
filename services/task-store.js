@@ -5,7 +5,7 @@ export class TaskManager {
         this.title = title;
         this.description = description;
         this.importance = importance;
-        this.dueDate = new Date(dueDate);
+        this.dueDate = dueDate;
         this.createdAt = new Date();
         this.completed = completed;
     }
@@ -23,7 +23,7 @@ export class TaskStore {
     }
     
     async delete(id) {
-        await this.db.remove({ _id: id } );
+        this.db.remove({ _id: id } );
         //return this.get(id);
     }
     
@@ -45,27 +45,23 @@ export class TaskStore {
     }
     
     async all(query, sortBy, sortOrder) {
-        let dbQuery;
-        /*let dbQuery = {
-            completed: filterCompleted
-        };
-        if (filterCompleted) {
-            dbQuery.$and.push({ $or: [{ completed: true }] });
-        }*/
         if (sortBy === "createdAt") {
-            return this.db.find(dbQuery).sort({ createdAt: sortOrder }).exec();
+            return this.db.find().sort({ createdAt: sortOrder }).exec();
         }
-        if (sortBy === "title") {
-            return this.db.find(dbQuery).sort({ title: sortOrder }).exec();
+        else if (sortBy === "dueDate") {
+            return this.db.find().sort({ dueDate: sortOrder }).exec();
+        }
+        else if (sortBy === "title") {
+            return this.db.find().sort({ title: sortOrder }).exec();
         }
         else if (sortBy === "importance") {
-            return this.db.find(dbQuery).sort({ importance: sortOrder }).exec();
+            return this.db.find().sort({ importance: sortOrder }).exec();
         }
         else if (sortBy === "completed") {
-            return this.db.find(dbQuery).sort({ completed: sortOrder }).exec();
+            return this.db.find().sort({ completed: sortOrder }).exec();
         }
         else {
-            return this.db.find(dbQuery).sort({ dueDate: sortOrder }).exec();
+            return this.db.find().exec();
         }
     }
 }
