@@ -1,24 +1,6 @@
-{"title":"fsdfsd","description":"fsd","importance":1,"dueDate":"2023-08-02","createdAt":{"$$date":1688694322397},"completed":false,"_id":"JRvTxYv1nriiUvHb"}
-{"title":"fsdfsd","description":"fsd","importance":1,"dueDate":"2023-08-02","createdAt":{"$$date":1688694321773},"completed":false,"_id":"NC5lEVFtPEjd3ljA"}
-{"title":"fsdfsd","description":"fsd","importance":1,"dueDate":"2023-08-02","createdAt":{"$$date":1688694321383},"completed":false,"_id":"fvZtxipOkXrwJ3Ku"}
-{"title":"fsdfsd","description":"fsd","importance":1,"dueDate":"2023-08-02","createdAt":{"$$date":1688694322956},"completed":false,"_id":"j8iB4ECEqJ93IH3q"}
-{"title":"fsdfsd","description":"fsd","importance":1,"dueDate":"2023-08-02","createdAt":{"$$date":1688694319949},"completed":false,"_id":"jmxwRAvmyXrQBUsj"}
-{"title":"fsdfsd","description":"fsd","importance":1,"dueDate":"2023-08-02","createdAt":{"$$date":1688694321054},"completed":false,"_id":"loJHJXgnQp6JKNk0"}
-{"title":"fsdfsd","description":"fsd","importance":1,"dueDate":"2023-08-02","createdAt":{"$$date":1688694322033},"completed":false,"_id":"zyJ9Rhlic8cvmmYR"}
-{"$$deleted":true,"_id":"JRvTxYv1nriiUvHb"}
-{"$$deleted":true,"_id":"fvZtxipOkXrwJ3Ku"}
-{"$$deleted":true,"_id":"j8iB4ECEqJ93IH3q"}
-{"$$deleted":true,"_id":"jmxwRAvmyXrQBUsj"}
-{"$$deleted":true,"_id":"loJHJXgnQp6JKNk0"}
-{"$$deleted":true,"_id":"zyJ9Rhlic8cvmmYR"}
-{"$$deleted":true,"_id":"NC5lEVFtPEjd3ljA"}
-{"title":"Regardless","description":"Mobility over Facility","importance":1,"dueDate":"2023-07-21","createdAt":{"$$date":1688694604350},"completed":false,"_id":"kYVU9CLbczEI6Q70"}
-{"title":"Fitness","description":"Anesa anrufen","importance":1,"dueDate":"2023-08-06","createdAt":{"$$date":1688694622021},"completed":false,"_id":"XFHsmT7EdcrOe8bd"}
-{"title":"Fitness","description":"Anesa anrufen","importance":"5","dueDate":"2023-08-06","createdAt":{"$$date":1688694622021},"completed":false,"_id":"XFHsmT7EdcrOe8bd"}
-{"title":"Fitness","description":"Anesa anrufen","importance":"5","dueDate":"2023-08-06","createdAt":{"$$date":1688694622021},"completed":true,"_id":"XFHsmT7EdcrOe8bd"}
-{"title":"Badi","description":"Schwimmen","importance":1,"dueDate":"2023-08-03","createdAt":{"$$date":1688694795557},"completed":true,"_id":"ouWEjS3LK4epYSMj"}
+{"title":"fdgsdfgsdf","description":"sgdfgsfdg","importance":1,"dueDate":"2023-07-20","createdAt":{"$$date":1688758120011},"completed":false,"_id":"3HZv1tVLqAXek3eM"}
+{"title":"Trade Software","description":"Install and Upgrade","importance":"1","dueDate":"2023-07-14","createdAt":{"$$date":1688721426511},"completed":true,"_id":"NFHyNG4om6ouGmjs"}
 {"title":"Flughafen","description":"Tickets","importance":5,"dueDate":"2023-07-29","createdAt":{"$$date":1688694824520},"completed":false,"_id":"VWRfQeXlRjss4xyz"}
+{"title":"Fitness","description":"Anesa anrufen","importance":"5","dueDate":"2023-08-06","createdAt":{"$$date":1688694622021},"completed":true,"_id":"XFHsmT7EdcrOe8bd"}
 {"title":"Badi","description":"Schwimmen","importance":"3","dueDate":"2023-08-03","createdAt":{"$$date":1688694795557},"completed":true,"_id":"ouWEjS3LK4epYSMj"}
-{"title":"Regardless","description":"Mobility over Facility","importance":"2","dueDate":"2023-07-21","createdAt":{"$$date":1688694604350},"completed":false,"_id":"kYVU9CLbczEI6Q70"}
-{"title":"Regardless","description":"Mobility over Facility","importance":"2","dueDate":"2023-07-21","createdAt":{"$$date":1688694604350},"completed":true,"_id":"kYVU9CLbczEI6Q70"}
-{"$$deleted":true,"_id":"kYVU9CLbczEI6Q70"}
+{"$$deleted":true,"_id":"3HZv1tVLqAXek3eM"}
