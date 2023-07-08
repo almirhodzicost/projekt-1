@@ -1,6 +1,0 @@
-{"title":"fdgsdfgsdf","description":"sgdfgsfdg","importance":1,"dueDate":"2023-07-20","createdAt":{"$$date":1688758120011},"completed":false,"_id":"3HZv1tVLqAXek3eM"}
-{"title":"Trade Software","description":"Install and Upgrade","importance":"1","dueDate":"2023-07-14","createdAt":{"$$date":1688721426511},"completed":true,"_id":"NFHyNG4om6ouGmjs"}
-{"title":"Flughafen","description":"Tickets","importance":5,"dueDate":"2023-07-29","createdAt":{"$$date":1688694824520},"completed":false,"_id":"VWRfQeXlRjss4xyz"}
-{"title":"Fitness","description":"Anesa anrufen","importance":"5","dueDate":"2023-08-06","createdAt":{"$$date":1688694622021},"completed":true,"_id":"XFHsmT7EdcrOe8bd"}
-{"title":"Badi","description":"Schwimmen","importance":"3","dueDate":"2023-08-03","createdAt":{"$$date":1688694795557},"completed":true,"_id":"ouWEjS3LK4epYSMj"}
-{"$$deleted":true,"_id":"3HZv1tVLqAXek3eM"}
