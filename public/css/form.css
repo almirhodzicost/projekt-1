@@ -112,6 +112,26 @@
     color: white;
 }
 
+.btn-order {
+    background-color: rgb(110, 106, 106, 20%);
+    color: var(--theme-button-color);
+}
+
+.btn-order.active {
+    background-color: rgb(110, 106, 106, 50%);
+    color: var(--theme-color);
+}
+.btn-order.active::after {
+    font-size: 0.7rem;
+}
+
+.btn-order.active.desc::after {
+    content: "▼";
+}
+
+.btn-order.active.asc::after {
+    content: "▲";
+}
 .btn:hover {
     background-image: linear-gradient(rgb(0 0 0/15%) 0 0);
 }

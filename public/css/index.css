@@ -24,6 +24,7 @@ body {
 :root {
     --theme-background: white;
     --theme-color: #222;
+    --theme-button-color: #5d4b4b;
     --theme-button-background: #055fd9;
     --theme-form-background: #ece9e9;
     --theme-form-border: #ccc;
@@ -44,6 +45,7 @@ body {
 .dark-theme {
     --theme-background: #222231;
     --theme-color: white;
+    --theme-button-color: #a18b8b;
     --theme-button-background: #485d7a;
     --theme-form-background: #3e3e59;
     --theme-form-border: #485d7a;
