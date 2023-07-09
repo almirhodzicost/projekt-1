@@ -64,7 +64,7 @@ export class TodoStorage {
     saveSorting(a,b) {
         localStorage.setItem("todos_sort", JSON.stringify({sortBy: a, sortOrder: b}));
     }
-
+ 
     addTodo(todo) {
         this.todos.push(todo);
         this.saveTodos();

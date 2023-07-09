@@ -3,16 +3,7 @@ import { todoService } from "../services/todo-service.js";
 import { helper } from "./helper.js";
 
 export class TodoController {
-    
-    // Create Unique ID
-    // ===================================================
-    UniqueId() {
-        const d = new Date();
-        let ms = d.getMilliseconds();
-        return Math.floor(Math.random() * 65465165651646416 + ms);
-    }
-    // ---------------------------------------------------
-    
+  
     // Constructor
     // ===================================================
     constructor() {
@@ -22,7 +13,6 @@ export class TodoController {
             this.todoTemplateCompiled = Handlebars.compile(todoTemplateElement.innerHTML);
         }
 
-        this.todoService = todoService;
         this.taskService = taskService;
         this.todoList = document.querySelector("#todoList");
 
@@ -34,10 +24,11 @@ export class TodoController {
                 );
             }
         });
-        
+
         // Sorting Buttons
         // ===================================================
         const buttons = document.querySelectorAll("#SortingAction .btn");
+        
         buttons.forEach(function(button) {
             button.addEventListener('click', function(e) {
                 const sortType = e.target.dataset.actionsort;
@@ -46,6 +37,17 @@ export class TodoController {
                 const parseStoredSorting = JSON.parse(storedSorting);
                 const storedSortBy = parseStoredSorting.sortBy;
                 const storedSortOrder = parseStoredSorting.sortOrder;
+                
+                document.querySelectorAll('.btn.btn-order').forEach((el) => {
+                    el.classList.remove('active','asc','desc');
+                });
+                
+                const sortbyCompleted = helper.qS('[data-actionsort="'+sortType+'"]');
+
+                if(sortType === sortType) {
+                    sortbyCompleted.classList.add('active',storedSortOrder);
+                    //alert(storedSortOrder);
+                }
 
                 if(storedSortBy===sortType && storedSortOrder==='asc'){
                     const sortOrder = 'desc';
@@ -56,6 +58,7 @@ export class TodoController {
                 todoController.loadTodos(this.storedSortBy,this.storedSortOrder);
             });
         });
+        
         
         // Modal
         // ===================================================
@@ -125,6 +128,7 @@ export class TodoController {
         const storedSorting = localStorage.getItem("todos_sort");
         const parseStoredSorting = JSON.parse(storedSorting);
         this.todos = await taskService.getAllTask(parseStoredSorting.sortBy, parseStoredSorting.sortOrder);
+
         let todoHTML = "";
         
         if (this.todoTemplateCompiled) {
@@ -180,7 +184,7 @@ export class TodoController {
                     title.value = todoIndex.title;
                     description.value = todoIndex.description;
                     dueDate.value = this.formatDate(todoIndex.dueDate);
-                    importance.value = todoIndex.importance;
+                    importance.value = parseInt(todoIndex.importance);
                     completed.value = todoIndex.completed;
                 });
             });
@@ -231,7 +235,7 @@ export class TodoController {
             title: title.value,
             description: description.value,
             dueDate: dueDate.value,
-            importance: Number(importance.value),
+            importance: parseInt(importance.value),
             createdAt: this.currentDate(),
             completed: CheckBoxCompleted(completed.value)
         };
@@ -244,7 +248,7 @@ export class TodoController {
             todoUpdate.title = title.value;
             todoUpdate.description = description.value;
             todoUpdate.dueDate = this.formatDate(dueDate.value);
-            todoUpdate.importance = importance.value;
+            todoUpdate.importance = parseInt(importance.value);
             todoUpdate.completed = helper.cBChecked(completed);
             
             await this.taskService.updateTask(todoUpdate._id, todoUpdate);

@@ -3,7 +3,7 @@ import { taskStore } from '../services/task-store.js'
 export class TaskController {
     
     getAllTasks = async (req, res) => {
-        const sortBy = req.query.sortBy || 'createdAt';
+        const sortBy = req.query.sortBy || 'title';
         const sortOrder = req.query.sortOrder === 'desc' ? -1 : 1;
         res.json(await taskStore.all(req.query.query, sortBy, sortOrder));
     };
