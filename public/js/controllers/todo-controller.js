@@ -37,23 +37,12 @@ export class TodoController {
                 const parseStoredSorting = JSON.parse(storedSorting);
                 const storedSortBy = parseStoredSorting.sortBy;
                 const storedSortOrder = parseStoredSorting.sortOrder;
-                
-                document.querySelectorAll('.btn.btn-order').forEach((el) => {
-                    el.classList.remove('active','asc','desc');
-                });
-                
-                const sortbyCompleted = helper.qS('[data-actionsort="'+sortType+'"]');
 
-                if(sortType === sortType) {
-                    sortbyCompleted.classList.add('active',storedSortOrder);
-                    //alert(storedSortOrder);
-                }
-
-                if(storedSortBy===sortType && storedSortOrder==='asc'){
-                    const sortOrder = 'desc';
+                if(storedSortBy===sortType && storedSortOrder==='desc'){
+                    const sortOrder = 'asc';
                     todoService.sortingTodos(sortType, sortOrder);
                 } else {
-                    todoService.sortingTodos(sortType, 'asc');
+                    todoService.sortingTodos(sortType, 'desc');
                 }
                 todoController.loadTodos(this.storedSortBy,this.storedSortOrder);
             });
@@ -128,6 +117,15 @@ export class TodoController {
         const storedSorting = localStorage.getItem("todos_sort");
         const parseStoredSorting = JSON.parse(storedSorting);
         this.todos = await taskService.getAllTask(parseStoredSorting.sortBy, parseStoredSorting.sortOrder);
+
+        document.querySelectorAll('.btn.btn-order').forEach((el) => {
+            el.classList.remove('active','asc','desc');
+        });
+        
+        if(parseStoredSorting.sortBy === parseStoredSorting.sortBy) {
+            const sortbyCompleted = helper.qS('[data-actionsort="'+parseStoredSorting.sortBy+'"]');
+            sortbyCompleted.classList.add('active',parseStoredSorting.sortOrder);
+        }
 
         let todoHTML = "";
         
