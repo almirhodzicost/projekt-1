@@ -236,8 +236,8 @@ export class TodoController {
             todoUpdate.completed = helper.cBChecked(completed);
             
             await this.taskService.updateTask(todoUpdate._id, todoUpdate);
-            
-            await this.formTodo.reset();
+            todoId.value = null;
+
             // ---------------------------------------------------
         } else {
             // Add todo
