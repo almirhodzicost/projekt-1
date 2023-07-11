@@ -48,7 +48,6 @@ export class TodoController {
             });
         });
         
-        
         // Modal
         // ===================================================
         let modal = helper.gE("myModal");
@@ -90,10 +89,8 @@ export class TodoController {
         let day = date.getDate();
         let month = date.getMonth() + 1;
         let year = date.getFullYear();
-        
         if (day < 10) { day = '0' + day; }
         if (month < 10) { month = '0' + month; }
-        
         return `${year}-${month}-${day}`;
     }
     
@@ -102,10 +99,8 @@ export class TodoController {
         let days = date.getDate();
         let months = date.getMonth() + 1;
         let years = date.getFullYear();
-        
         if (days < 10) { days = '0' + days; }
         if (months < 10) { months = '0' + months; }
-        
         return `${years}-${months}-${days}`;
     }
 
@@ -203,15 +198,6 @@ export class TodoController {
    async deleteTodoById(id) {
         this.taskService.deleteTask(id);
         this.loadTodos();
-    }
-    // ---------------------------------------------------
-    
-    // Update Todos
-    // ===================================================
-    async updateTodoById(id, updatedTodo) {
-        /*alert(updatedTodo);
-        await this.taskService.updateTask(id, updatedTodo);
-        await this.loadTodos();*/
     }
     // ---------------------------------------------------
     
