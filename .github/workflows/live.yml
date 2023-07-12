@@ -12,5 +12,5 @@ jobs:
       uses: SamKirkland/FTP-Deploy-Action@4.3.3
       with:
         server: ${{ secrets.FTP_URL_PUBLIC }}
-        username: todo_public
+        username: ${{ secrets.FTP_USER_PUBLIC }}
         password: ${{ secrets.FTP_PASS_PUBLIC }}
