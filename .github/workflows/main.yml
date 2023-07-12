@@ -11,6 +11,6 @@ jobs:
     - name: 📂 Sync files
       uses: SamKirkland/FTP-Deploy-Action@4.3.3
       with:
-        server: staging.mediacode.ch
+        server: ${{ secrets.FTP_URL_STAGING }}
         username: todo_staging
         password: ${{ secrets.FTP_STAGING_PASS }}
