@@ -11,6 +11,6 @@ jobs:
     - name: 📂 Sync files
       uses: SamKirkland/FTP-Deploy-Action@4.3.3
       with:
-        server: todo.mediacode.ch
+        server: ${{ secrets.FTP_URL_PUBLIC }}
         username: todo_public
-        password: ${{ secrets.FTP_LIVE_PASS }}
+        password: ${{ secrets.FTP_PASS_PUBLIC }}
