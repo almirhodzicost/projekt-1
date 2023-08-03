@@ -237,7 +237,6 @@ export class TodoController {
             
             await this.taskService.updateTask(todoUpdate._id, todoUpdate);
             todoId.value = null;
-
             // ---------------------------------------------------
         } else {
             // Add todo
